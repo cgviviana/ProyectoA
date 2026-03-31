@@ -1,1 +1,687 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tipos de examen</title>
+  <script type="text/javascript" src="https://gc.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=xNwRARvw-oS1tHUzJ8cQm6jWQ608NhfdJESppDmDFye9kIyKDA7naSWSnJ7GN7Vi6og8dcrzyKBG4yDJHdB_MLGj3-TIPwca5V3d2W243ecA9ywlylLzILvqLUo9UwDW4wI7Fdvm_Na8sJmHN1QzhIV-A5xwMD7Dh8Qq2QXgnkn9oyHIfu7ayyDw4xAux4Eh9dvYzB8TRtMxfcqBL_6v9DuRLnohlEV0U554wSnR-_k5ROm6hBxI0NRM_JwO3iS622k8k8H9Scinlp5ttDiOwQ" charset="UTF-8"></script><style>
+    :root{
+      --bg:#fffafc;
+      --ink:#4f4a69;
+      --muted:#7b7493;
+      --line:#eadff2;
+      --card:#ffffff;
+      --pink:#ffd9ea;
+      --lav:#e8e1ff;
+      --mint:#def7ee;
+      --sky:#e2f2ff;
+      --butter:#fff2bd;
+      --shadow:0 18px 50px rgba(143, 120, 182, .13);
+      --radius:34px;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      font-family:Inter, "Nunito", system-ui, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(255,221,236,.9) 0%, transparent 26%),
+        radial-gradient(circle at top right, rgba(224,238,255,.85) 0%, transparent 24%),
+        linear-gradient(180deg, #fffafd 0%, #fffefb 100%);
+    }
+
+    .page{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:26px 16px 34px;
+    }
+
+    .shell{
+      width:min(100%, 520px);
+      text-align:center;
+    }
+
+    h1{
+      margin:0 0 18px;
+      font-size:clamp(2rem, 5vw, 3rem);
+      line-height:1;
+      letter-spacing:-.04em;
+      font-weight:900;
+      color:#4d4768;
+    }
+
+    .card{
+      width:min(100%, 440px);
+      height:min(78vh, 760px);
+      min-height:620px;
+      margin:0 auto;
+      position:relative;
+      perspective:1600px;
+    }
+
+    .card-inner{
+      position:relative;
+      width:100%;
+      height:100%;
+      transform-style:preserve-3d;
+      transition:transform .72s ease;
+    }
+
+    .card.is-flipped .card-inner{transform:rotateY(180deg)}
+
+    .face{
+      position:absolute;
+      inset:0;
+      backface-visibility:hidden;
+      border-radius:var(--radius);
+      border:1.5px solid var(--line);
+      background:var(--card);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .front{
+      padding:24px 24px 28px;
+      background:linear-gradient(180deg, #fffafc 0%, #ffffff 100%);
+    }
+
+    .back{
+      padding:22px 22px 18px;
+      transform:rotateY(180deg);
+      background:linear-gradient(180deg, #ffffff 0%, #fffafc 100%);
+    }
+
+    .head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:16px;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff8fc;
+      font-size:.96rem;
+      font-weight:800;
+      color:#6a6484;
+      text-align:left;
+    }
+
+    .flip-btn{
+      width:56px;
+      height:56px;
+      border:none;
+      border-radius:999px;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, var(--pink), var(--lav));
+      color:#5e5977;
+      box-shadow:0 10px 24px rgba(142, 120, 181, .14);
+      font-size:1.45rem;
+      font-weight:900;
+      transition:transform .18s ease, box-shadow .18s ease;
+      flex:0 0 auto;
+    }
+
+    .flip-btn:hover,
+    .flip-btn:focus-visible,
+    .nav-btn:hover,
+    .nav-btn:focus-visible{
+      transform:translateY(-2px) scale(1.02);
+      box-shadow:0 14px 28px rgba(142, 120, 181, .2);
+      outline:none;
+    }
+
+    .front-body{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:20px;
+      padding:8px 4px 14px;
+    }
+
+    .art{
+      width:min(100%, 310px);
+      margin-inline:auto;
+    }
+
+    .art svg{display:block; width:100%; height:auto}
+
+    .name{
+      margin:0;
+      font-size:clamp(2rem, 5.3vw, 2.75rem);
+      line-height:1.03;
+      letter-spacing:-.04em;
+      font-weight:900;
+      color:#4f4969;
+    }
+
+    .mini{
+      margin:0;
+      font-size:1.05rem;
+      line-height:1.35;
+      color:#8a84a2;
+      max-width:280px;
+    }
+
+    .back-title{
+      margin:2px 0 0;
+      font-size:1.8rem;
+      line-height:1.05;
+      letter-spacing:-.03em;
+      font-weight:900;
+      text-align:left;
+      color:#4f4968;
+    }
+
+    .back-scroll{
+      flex:1;
+      min-height:0;
+      overflow:auto;
+      padding-right:4px;
+      text-align:left;
+      scrollbar-width:thin;
+      scrollbar-color:#dac9ef transparent;
+    }
+
+    .back-scroll::-webkit-scrollbar{width:8px}
+    .back-scroll::-webkit-scrollbar-thumb{background:#dac9ef;border-radius:999px}
+
+    .row{
+      padding:13px 0 14px;
+      border-bottom:1px solid #efe6f5;
+    }
+
+    .row:last-child{border-bottom:none}
+
+    .label{
+      display:block;
+      margin-bottom:5px;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:#8d7fad;
+    }
+
+    .value{
+      display:block;
+      font-size:1rem;
+      line-height:1.42;
+      color:#5a556f;
+    }
+
+    .controls{
+      width:min(100%, 440px);
+      margin:16px auto 0;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:10px;
+    }
+
+    .nav-btn{
+      border:none;
+      cursor:pointer;
+      min-height:54px;
+      border-radius:999px;
+      background:#fff;
+      border:1.5px solid var(--line);
+      color:#5f5979;
+      font-size:1rem;
+      font-weight:800;
+      padding:0 16px;
+      box-shadow:0 10px 24px rgba(142,120,181,.08);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+
+    .nav-btn.prev{justify-self:start}
+    .nav-btn.next{justify-self:end}
+
+    .count{
+      font-size:.96rem;
+      font-weight:800;
+      color:#7c7594;
+    }
+
+    @media (max-width:520px){
+      .page{padding:18px 12px 26px}
+      .card{width:100%; min-height:560px; height:min(76vh, 700px)}
+      .front{padding:18px 18px 22px}
+      .back{padding:18px 18px 14px}
+      .chip{font-size:.88rem; padding:9px 14px}
+      .flip-btn{width:50px;height:50px;font-size:1.3rem}
+      .back-title{font-size:1.55rem}
+      .mini{font-size:.98rem}
+      .value{font-size:.95rem}
+      .controls{grid-template-columns:1fr auto 1fr; gap:8px}
+      .nav-btn{min-height:48px; font-size:.92rem; padding:0 12px}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="shell" aria-label="Flashcards de exámenes veterinarios">
+      <h1>Tipos de examen</h1>
+      <article class="card" id="card">
+        <div class="card-inner" id="cardInner"></div>
+      </article>
+      <div class="controls">
+        <button class="nav-btn prev" id="prevBtn" type="button" aria-label="Ficha anterior">← Anterior</button>
+        <div class="count" id="count"></div>
+        <button class="nav-btn next" id="nextBtn" type="button" aria-label="Ficha siguiente">Siguiente →</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const exams = [
+      {
+        name:"Radiografía (RX)",
+        short:"Estudio básico con rayos X.",
+        classif:"Imagenología",
+        icon:"xray",
+        checks:"Huesos, tórax, abdomen y cuerpos extraños radiopacos.",
+        recommend:"Cuando hay dolor, fractura, tos, dificultad respiratoria, vómito, trauma o sospecha de obstrucción.",
+        purpose:"Apoya el diagnóstico rápido de lesiones óseas y cambios en órganos.",
+        species:"Perros y gatos principalmente; también aves, conejos y reptiles según tamaño y manejo.",
+        uses:"Equipo de rayos X y detector o placa digital."
+      },
+      {
+        name:"Ecografía abdominal",
+        short:"Imagen en tiempo real de órganos blandos.",
+        classif:"Imagenología",
+        icon:"ultrasound",
+        checks:"Hígado, riñones, bazo, vejiga, útero, intestino y líquido libre.",
+        recommend:"Cuando hay dolor abdominal, masas, alteraciones urinarias, gestación o cambios en análisis de sangre.",
+        purpose:"Permite ver tejidos blandos y guiar algunos procedimientos.",
+        species:"Muy usada en perros y gatos; también en conejos, hurones y algunos reptiles.",
+        uses:"Ecógrafo, transductor y gel."
+      },
+      {
+        name:"Ecografía FAST",
+        short:"Ecografía rápida de urgencias.",
+        classif:"Imagenología de urgencia",
+        icon:"fast",
+        checks:"Líquido en abdomen o tórax y hallazgos rápidos tras trauma o shock.",
+        recommend:"Cuando el paciente llega inestable, atropellado, con abdomen distendido o sospecha de hemorragia.",
+        purpose:"Ayuda a decidir con rapidez si hay emergencia interna.",
+        species:"Principalmente perros y gatos; en otras especies depende del equipo y experiencia.",
+        uses:"Ecógrafo portátil o de consulta rápida."
+      },
+      {
+        name:"Estudio Doppler",
+        short:"Evalúa flujo sanguíneo y vasos.",
+        classif:"Imagenología funcional",
+        icon:"doppler",
+        checks:"Dirección y velocidad del flujo en vasos y corazón.",
+        recommend:"Cuando se sospechan alteraciones vasculares, problemas cardíacos o para complementar una ecografía.",
+        purpose:"Aporta información funcional, no solo anatómica.",
+        species:"Común en perros y gatos; en otras especies se usa si el tamaño lo permite.",
+        uses:"Ecógrafo con función Doppler."
+      },
+      {
+        name:"Tomografía (TAC)",
+        short:"Cortes detallados del cuerpo.",
+        classif:"Imagenología avanzada",
+        icon:"ct",
+        checks:"Cráneo, columna, cavidad nasal, tórax, hueso y lesiones complejas.",
+        recommend:"Cuando la radiografía no basta o se necesita localizar mejor una lesión, masa o trauma.",
+        purpose:"Ofrece imágenes más precisas para diagnóstico y planeación quirúrgica.",
+        species:"Más habitual en perros y gatos; en aves, conejos y reptiles suele hacerse en centros especializados.",
+        uses:"Tomógrafo y con frecuencia sedación o anestesia."
+      },
+      {
+        name:"Resonancia magnética",
+        short:"Imagen avanzada de tejidos blandos.",
+        classif:"Imagenología avanzada",
+        icon:"mri",
+        checks:"Cerebro, médula espinal, discos, articulaciones y tejidos blandos profundos.",
+        recommend:"Cuando hay convulsiones, signos neurológicos, dolor de columna o lesión que no se define con RX o TAC.",
+        purpose:"Da mucho detalle de sistema nervioso y tejidos blandos.",
+        species:"Principalmente perros y gatos; menos frecuente en otras especies por costo y logística.",
+        uses:"Equipo de resonancia y anestesia."
+      },
+      {
+        name:"Estudio contrastado",
+        short:"Radiografía con medio de contraste.",
+        classif:"Imagenología",
+        icon:"contrast",
+        checks:"Tránsito digestivo, esófago, vías urinarias o algunas estructuras que en RX simple no se delimitan bien.",
+        recommend:"Cuando se busca una obstrucción, fuga, estrechez o alteración del tránsito.",
+        purpose:"Resalta trayectos o cavidades para ver mejor su forma y paso.",
+        species:"Común en perros y gatos; en otras especies se hace según el caso.",
+        uses:"Rayos X y medio de contraste indicado por el veterinario."
+      },
+      {
+        name:"Hemograma",
+        short:"Conteo celular de la sangre.",
+        classif:"Análisis hematológico",
+        icon:"blood",
+        checks:"Glóbulos rojos, blancos, hematocrito, hemoglobina y plaquetas.",
+        recommend:"Cuando hay fiebre, debilidad, palidez, infección, inflamación, sangrado o como chequeo prequirúrgico.",
+        purpose:"Orienta sobre anemia, infección, estrés y respuesta inflamatoria.",
+        species:"Se usa en perros, gatos, conejos, aves y reptiles con valores propios para cada especie.",
+        uses:"Muestra de sangre con anticoagulante."
+      },
+      {
+        name:"Perfil bioquímico",
+        short:"Revisa función de órganos y metabolismo.",
+        classif:"Análisis bioquímico",
+        icon:"chemistry",
+        checks:"Riñón, hígado, glucosa, proteínas, electrolitos y otros marcadores.",
+        recommend:"Cuando hay vómito, deshidratación, enfermedad crónica, cambios en apetito o control preanestésico.",
+        purpose:"Apoya la valoración de órganos y alteraciones metabólicas.",
+        species:"Muy frecuente en perros y gatos; en otras especies se ajusta el panel.",
+        uses:"Suero o plasma en analizador."
+      },
+      {
+        name:"Urianálisis",
+        short:"Estudio físico, químico y microscópico de orina.",
+        classif:"Análisis urinario",
+        icon:"urine",
+        checks:"Densidad, pH, proteínas, glucosa, bacterias, sedimento y cristales.",
+        recommend:"Cuando hay micción frecuente, sangre, dolor al orinar, enfermedad renal o diabetes.",
+        purpose:"Ayuda a estudiar riñón, vejiga, infección urinaria y cálculos.",
+        species:"Muy común en perros y gatos; también útil en hurones y conejos.",
+        uses:"Muestra de orina, tira reactiva y microscopía."
+      },
+      {
+        name:"Coprológico",
+        short:"Examen de heces.",
+        classif:"Análisis fecal",
+        icon:"fecal",
+        checks:"Parásitos, huevos, ooquistes y algunos cambios digestivos.",
+        recommend:"Cuando hay diarrea, pérdida de peso, desparasitación de control o ingreso de un nuevo paciente.",
+        purpose:"Detecta parásitos intestinales y apoya la evaluación digestiva.",
+        species:"Frecuente en perros, gatos, conejos, aves, reptiles y pequeños mamíferos.",
+        uses:"Muestra fresca y técnicas de flotación o examen directo."
+      },
+      {
+        name:"Citología",
+        short:"Observación de células al microscopio.",
+        classif:"Microscopía diagnóstica",
+        icon:"cytology",
+        checks:"Células de oído, piel, masas, secreciones o líquidos.",
+        recommend:"Cuando hay bultos, secreción, inflamación, otitis o lesiones en piel.",
+        purpose:"Permite orientar si hay infección, levaduras, inflamación o cambios tumorales.",
+        species:"Muy usada en perros y gatos; también en conejos, hurones y aves.",
+        uses:"Muestra en lámina y coloración."
+      },
+      {
+        name:"Aspirado con aguja fina",
+        short:"Toma de muestra de una masa o ganglio.",
+        classif:"Toma de muestra",
+        icon:"needle",
+        checks:"Células de nódulos, ganglios y masas internas o externas.",
+        recommend:"Cuando aparece una masa o ganglio aumentado y se necesita una orientación rápida.",
+        purpose:"Ayuda a diferenciar inflamación, quiste y algunos tumores sin cirugía abierta.",
+        species:"Frecuente en perros y gatos; en otras especies depende del tamaño y localización.",
+        uses:"Aguja fina, jeringa y láminas."
+      },
+      {
+        name:"Cultivo y antibiograma",
+        short:"Identifica microbios y sensibilidad.",
+        classif:"Microbiología",
+        icon:"culture",
+        checks:"Bacterias u hongos y qué medicamento puede funcionar mejor.",
+        recommend:"Cuando hay infección persistente, recurrente o que no responde al tratamiento inicial.",
+        purpose:"Permite escoger un tratamiento más dirigido.",
+        species:"Se usa en muchas especies si se logra tomar una buena muestra.",
+        uses:"Hisopo, orina, tejido o secreción enviados al laboratorio."
+      },
+      {
+        name:"Prueba rápida SNAP",
+        short:"Test rápido para enfermedades concretas.",
+        classif:"Prueba rápida inmunológica",
+        icon:"snap",
+        checks:"Antígenos o anticuerpos según el kit utilizado.",
+        recommend:"Cuando se sospechan enfermedades infecciosas o se hace tamizaje de rutina.",
+        purpose:"Da una orientación rápida en consulta.",
+        species:"Depende del kit: muchos son para perro o gato y no todos sirven para otras especies.",
+        uses:"Kit rápido y muestra de sangre, suero o heces."
+      },
+      {
+        name:"Electrocardiograma",
+        short:"Registra la actividad eléctrica del corazón.",
+        classif:"Prueba cardiológica",
+        icon:"ecg",
+        checks:"Ritmo, frecuencia y conducción eléctrica.",
+        recommend:"Cuando hay soplo, desmayo, pulso irregular, taquicardia o control cardíaco.",
+        purpose:"Detecta arritmias y alteraciones del ritmo.",
+        species:"Muy usado en perros y gatos; también puede hacerse en conejos y hurones.",
+        uses:"Electrodos y equipo de ECG."
+      },
+      {
+        name:"Presión arterial",
+        short:"Monitorea presión sanguínea.",
+        classif:"Monitoreo clínico",
+        icon:"pressure",
+        checks:"Presión sistólica y, según el equipo, otros parámetros.",
+        recommend:"Cuando hay enfermedad renal, problemas oculares, anestesia, hipertensión o pacientes geriátricos.",
+        purpose:"Ayuda a detectar hipertensión e hipotensión.",
+        species:"Muy común en perros y gatos; también en conejos y hurones.",
+        uses:"Manguito y monitor Doppler u oscilométrico."
+      },
+      {
+        name:"Raspado cutáneo",
+        short:"Examen de piel para parásitos.",
+        classif:"Prueba dermatológica",
+        icon:"skin",
+        checks:"Ácaros, parásitos y material de superficie o capas de la piel.",
+        recommend:"Cuando hay picazón, costras, caída de pelo o sospecha de sarna.",
+        purpose:"Ayuda a confirmar causas parasitarias o algunas alteraciones cutáneas.",
+        species:"Muy común en perros y gatos; también puede usarse en conejos.",
+        uses:"Hoja de bisturí, aceite mineral y microscopio."
+      },
+      {
+        name:"Tricograma",
+        short:"Revisa pelo y raíz al microscopio.",
+        classif:"Prueba dermatológica",
+        icon:"hair",
+        checks:"Tallo, raíz, quiebre del pelo y algunas alteraciones externas.",
+        recommend:"Cuando hay alopecia, lamido excesivo, pelo quebradizo o dudas sobre autotrauma.",
+        purpose:"Apoya la evaluación de problemas del pelaje.",
+        species:"Más habitual en perros y gatos; puede apoyar casos en conejos.",
+        uses:"Pelos tomados suavemente y microscopía."
+      },
+      {
+        name:"Test de Schirmer",
+        short:"Mide producción lagrimal.",
+        classif:"Prueba oftalmológica",
+        icon:"eye",
+        checks:"Cantidad de lágrima producida por el ojo.",
+        recommend:"Cuando hay ojo rojo, secreción, dolor ocular o sospecha de ojo seco.",
+        purpose:"Detecta disminución lagrimal.",
+        species:"Muy frecuente en perros; en gatos y conejos se usa según criterio clínico.",
+        uses:"Tira graduada de papel."
+      },
+      {
+        name:"Fluoresceína",
+        short:"Colorante para revisar córnea.",
+        classif:"Prueba oftalmológica",
+        icon:"fluorescein",
+        checks:"Úlceras, erosiones corneales y paso lagrimal.",
+        recommend:"Cuando hay dolor, guiño, secreción, lagrimeo o trauma en el ojo.",
+        purpose:"Permite confirmar lesiones de córnea.",
+        species:"Común en perros y gatos; también útil en conejos y otras especies.",
+        uses:"Tira o gota de colorante y luz adecuada."
+      },
+      {
+        name:"Oftalmoscopia",
+        short:"Observa el fondo del ojo.",
+        classif:"Prueba oftalmológica",
+        icon:"scope",
+        checks:"Retina, nervio óptico, cristalino y estructuras internas.",
+        recommend:"Cuando hay pérdida visual, cambios pupilares, hipertensión o revisión ocular completa.",
+        purpose:"Ayuda a detectar alteraciones oculares y algunos efectos sistémicos.",
+        species:"Más habitual en perros y gatos; también en aves y reptiles con equipo adecuado.",
+        uses:"Oftalmoscopio y a veces dilatación pupilar controlada."
+      },
+      {
+        name:"Biopsia",
+        short:"Muestra de tejido para estudio.",
+        classif:"Toma de tejido",
+        icon:"biopsy",
+        checks:"Fragmentos de piel, masa u órgano para análisis histológico.",
+        recommend:"Cuando la citología no basta o se necesita confirmar con mayor precisión.",
+        purpose:"Confirma diagnósticos y define mejor algunas lesiones o tumores.",
+        species:"Muy usada en perros y gatos; también en otras especies con protocolos específicos.",
+        uses:"Punch o instrumental quirúrgico, formol y laboratorio."
+      },
+      {
+        name:"Endoscopia",
+        short:"Visualización interna con cámara.",
+        classif:"Exploración interna",
+        icon:"endoscopy",
+        checks:"Vías digestivas, respiratorias y algunas cavidades.",
+        recommend:"Cuando hay vómito crónico, cuerpo extraño, sangrado, tos persistente o necesidad de biopsia interna.",
+        purpose:"Permite ver lesiones, tomar muestras y a veces retirar cuerpos extraños.",
+        species:"Más común en perros y gatos; en aves, hurones y reptiles depende del tamaño y del equipo.",
+        uses:"Endoscopio, cámara y sedación o anestesia."
+      }
+    ];
+
+    const card = document.getElementById('card');
+    const cardInner = document.getElementById('cardInner');
+    const count = document.getElementById('count');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let current = 0;
+    let flipped = false;
+
+    function art(type){
+      const base = `
+        <defs>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffdbea"/>
+            <stop offset="100%" stop-color="#e3defe"/>
+          </linearGradient>
+          <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#def4ff"/>
+            <stop offset="100%" stop-color="#dff8ee"/>
+          </linearGradient>
+        </defs>
+        <rect x="20" y="26" width="320" height="196" rx="34" fill="url(#gB)"/>
+        <circle cx="286" cy="44" r="18" fill="#f8e27e"/>
+      `;
+      const map = {
+        xray:`${base}<rect x="90" y="58" width="180" height="118" rx="22" fill="#43506f"/><rect x="108" y="74" width="144" height="86" rx="16" fill="#31415b"/><circle cx="180" cy="96" r="17" fill="#d9f4ff"/><rect x="171" y="112" width="18" height="38" rx="9" fill="#d9f4ff"/><rect x="156" y="123" width="48" height="10" rx="5" fill="#d9f4ff"/><rect x="158" y="149" width="10" height="22" rx="5" fill="#d9f4ff"/><rect x="192" y="149" width="10" height="22" rx="5" fill="#d9f4ff"/>`,
+        ultrasound:`${base}<rect x="60" y="72" width="92" height="76" rx="18" fill="#fff" stroke="#d7d6ef"/><rect x="74" y="86" width="64" height="48" rx="12" fill="#2e4661"/><path d="M80 116 q14 -18 28 0t28 0" stroke="#dff8ff" stroke-width="5" fill="none"/><rect x="166" y="82" width="32" height="16" rx="8" fill="#ffd5e8"/><rect x="178" y="98" width="20" height="56" rx="10" fill="#ffd5e8"/><path d="M196 150 q34 4 54 -18" stroke="#bfaee0" stroke-width="10" fill="none" stroke-linecap="round"/><rect x="278" y="122" width="22" height="24" rx="10" fill="#fff6d0" transform="rotate(28 289 134)"/>`,
+        fast:`${base}<rect x="74" y="74" width="92" height="74" rx="18" fill="#fff" stroke="#d7d6ef"/><rect x="88" y="88" width="64" height="46" rx="12" fill="#2e4661"/><path d="M96 114 q14 -12 28 0t28 0" stroke="#dff8ff" stroke-width="5" fill="none"/><path d="M188 122 q20 -34 58 -34 q26 0 44 18" stroke="#ffbdd5" stroke-width="10" fill="none" stroke-linecap="round"/><path d="M188 142 q28 20 60 20 q22 0 42 -10" stroke="#b9ace0" stroke-width="10" fill="none" stroke-linecap="round"/>`,
+        doppler:`${base}<circle cx="156" cy="126" r="42" fill="#ffd8e8"/><path d="M156 150 q-30 -20 -30 -46 a20 20 0 0 1 34 -12 a20 20 0 0 1 34 12 q0 26 -38 46" fill="#ff9fbc"/><path d="M228 98 q18 12 18 28" stroke="#bbaedf" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M244 84 q30 18 30 42" stroke="#bbaedf" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M102 120 h34" stroke="#76c3ff" stroke-width="7" stroke-linecap="round"/><path d="M94 136 h48" stroke="#76c3ff" stroke-width="7" stroke-linecap="round"/>`,
+        ct:`${base}<circle cx="180" cy="124" r="64" fill="#fff7fb" stroke="#d8d4ea" stroke-width="12"/><circle cx="180" cy="124" r="30" fill="#cdeeff"/><rect x="76" y="146" width="210" height="28" rx="14" fill="#e6dbff"/><rect x="110" y="156" width="142" height="14" rx="7" fill="#fff"/><circle cx="180" cy="124" r="8" fill="#ffd0df"/>`,
+        mri:`${base}<rect x="74" y="112" width="198" height="32" rx="16" fill="#ded2ff"/><circle cx="190" cy="110" r="58" fill="#fff" stroke="#d8d4ea" stroke-width="12"/><circle cx="190" cy="110" r="24" fill="#d5efff"/><rect x="98" y="126" width="130" height="14" rx="7" fill="#fff"/>`,
+        contrast:`${base}<rect x="96" y="60" width="40" height="106" rx="18" fill="#fff" stroke="#d8d4ea"/><path d="M104 112 q12 18 24 0 q-2 38 -12 44 q-10 -6 -12 -44" fill="#9ed8ff"/><rect x="176" y="74" width="102" height="88" rx="18" fill="#43506f"/><path d="M196 118 q22 -34 50 -8 q10 8 14 18" stroke="#dff8ff" stroke-width="8" fill="none" stroke-linecap="round"/><circle cx="228" cy="118" r="10" fill="#fff3a8"/>`,
+        blood:`${base}<rect x="96" y="58" width="34" height="92" rx="14" fill="#fff" stroke="#d5d2ec"/><rect x="142" y="58" width="34" height="92" rx="14" fill="#fff" stroke="#d5d2ec"/><rect x="188" y="58" width="34" height="92" rx="14" fill="#fff" stroke="#d5d2ec"/><path d="M102 98 h22 v36 h-22 z" fill="#ffb2c9"/><path d="M148 84 h22 v50 h-22 z" fill="#c0e9ff"/><path d="M194 106 h22 v28 h-22 z" fill="#ffe0a9"/>`,
+        chemistry:`${base}<rect x="92" y="132" width="176" height="18" rx="9" fill="#dccfff"/><path d="M116 62 h30 l-7 18 v48 a20 20 0 0 1 -20 20 a20 20 0 0 1 -20 -20 v-48z" fill="#fff" stroke="#d7d3eb"/><path d="M198 62 h30 l-7 18 v48 a20 20 0 0 1 -20 20 a20 20 0 0 1 -20 -20 v-48z" fill="#fff" stroke="#d7d3eb"/><path d="M102 114 q16 -10 32 0 q-12 26 -32 0" fill="#ffd2e1"/><path d="M184 104 q16 -10 32 0 q-12 30 -32 0" fill="#d3f2ff"/>`,
+        urine:`${base}<path d="M136 56 h68 l-8 18 v62 a26 26 0 0 1 -26 26 h-8 a26 26 0 0 1 -26 -26 v-62z" fill="#fff" stroke="#d7d2ea"/><path d="M144 108 q24 -12 48 0 q-12 30 -48 0" fill="#ffe59b"/><circle cx="266" cy="104" r="22" fill="#dff5ff"/><path d="M266 82 q18 22 18 31 a18 18 0 1 1 -36 0 q0 -9 18 -31" fill="#9ed8ff"/>`,
+        fecal:`${base}<ellipse cx="168" cy="138" rx="72" ry="28" fill="#e6d6ff"/><circle cx="142" cy="108" r="24" fill="#fff" stroke="#d8d4ea"/><circle cx="182" cy="104" r="22" fill="#fff" stroke="#d8d4ea"/><circle cx="164" cy="124" r="22" fill="#fff" stroke="#d8d4ea"/><circle cx="150" cy="110" r="5" fill="#ffbfd3"/><circle cx="182" cy="104" r="5" fill="#a8dfff"/>`,
+        cytology:`${base}<rect x="94" y="66" width="166" height="100" rx="18" fill="#fff" stroke="#d7d2ea" transform="rotate(-8 177 116)"/><circle cx="160" cy="108" r="18" fill="#ffd1e2"/><circle cx="202" cy="128" r="14" fill="#c9ebff"/><circle cx="224" cy="98" r="11" fill="#fff0a9"/>`,
+        needle:`${base}<ellipse cx="160" cy="140" rx="56" ry="28" fill="#ffd8e8"/><rect x="194" y="102" width="82" height="12" rx="6" fill="#d8d5ef" transform="rotate(-20 235 108)"/><rect x="258" y="102" width="34" height="8" rx="4" fill="#ffbdd3" transform="rotate(-20 275 106)"/><path d="M284 100 L314 90" stroke="#8f86a8" stroke-width="2.5"/>`,
+        culture:`${base}<circle cx="164" cy="120" r="50" fill="#fff" stroke="#d7d2ea" stroke-width="10"/><circle cx="148" cy="108" r="10" fill="#ffd2e1"/><circle cx="182" cy="128" r="12" fill="#c8ecff"/><circle cx="204" cy="104" r="7" fill="#fff0a8"/><rect x="210" y="144" width="78" height="14" rx="7" fill="#ccbde7" transform="rotate(35 248 151)"/>`,
+        snap:`${base}<rect x="96" y="86" width="172" height="78" rx="22" fill="#fff" stroke="#d8d3ea"/><rect x="114" y="102" width="86" height="14" rx="7" fill="#dff2ff"/><rect x="114" y="126" width="40" height="14" rx="7" fill="#ffe4ef"/><circle cx="228" cy="122" r="18" fill="#fff7cb"/><circle cx="228" cy="122" r="8" fill="#cbb7e9"/>`,
+        ecg:`${base}<path d="M78 132 h48 l14 -28 20 48 18 -30 22 0 18 -20 24 0" stroke="#6575a8" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="266" cy="100" r="22" fill="#ffd6e8"/><path d="M266 124 q-20 -14 -20 -32 a14 14 0 0 1 24 -8 a14 14 0 0 1 24 8 q0 18 -28 32" fill="#ff9fbc"/>`,
+        pressure:`${base}<rect x="90" y="114" width="94" height="36" rx="18" fill="#e2d8ff"/><rect x="182" y="122" width="48" height="18" rx="9" fill="#ffdae8"/><circle cx="264" cy="132" r="24" fill="#fff" stroke="#d7d2ea"/><path d="M264 132 L278 120" stroke="#7f7699" stroke-width="3.5" stroke-linecap="round"/><circle cx="264" cy="132" r="4.5" fill="#7f7699"/>`,
+        skin:`${base}<ellipse cx="168" cy="126" rx="78" ry="50" fill="#fff2f7" stroke="#d9d4ea"/><path d="M132 86 q12 -28 28 0" stroke="#c6b7df" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M170 78 q12 -28 28 0" stroke="#c6b7df" stroke-width="8" fill="none" stroke-linecap="round"/><circle cx="154" cy="122" r="7" fill="#ffbfd5"/><circle cx="188" cy="116" r="7" fill="#ffbfd5"/><rect x="246" y="94" width="20" height="58" rx="10" fill="#ffd7e8" transform="rotate(-18 256 123)"/><circle cx="236" cy="92" r="22" fill="none" stroke="#ffd7e8" stroke-width="9"/>`,
+        hair:`${base}<path d="M122 170 q10 -74 24 -108" stroke="#8e83ac" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M158 170 q10 -80 24 -118" stroke="#8e83ac" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M194 170 q10 -62 21 -92" stroke="#8e83ac" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="260" cy="108" r="22" fill="none" stroke="#ffd7e8" stroke-width="9"/><rect x="266" y="122" width="16" height="54" rx="8" fill="#ffd7e8" transform="rotate(-18 274 149)"/>`,
+        eye:`${base}<path d="M72 126 q44 -46 106 -46 q62 0 106 46 q-44 46 -106 46 q-62 0 -106 -46" fill="#fff" stroke="#d9d3ea" stroke-width="8"/><circle cx="178" cy="126" r="30" fill="#d7f2ff"/><circle cx="178" cy="126" r="15" fill="#4c5571"/><circle cx="188" cy="114" r="6" fill="#fff"/>`,
+        fluorescein:`${base}<path d="M72 126 q44 -46 106 -46 q62 0 106 46 q-44 46 -106 46 q-62 0 -106 -46" fill="#fff" stroke="#d9d3ea" stroke-width="8"/><circle cx="178" cy="126" r="30" fill="#ddffd0"/><circle cx="178" cy="126" r="15" fill="#4c5571"/><path d="M276 66 q18 22 18 31 a18 18 0 1 1 -36 0 q0 -9 18 -31" fill="#a2ddff"/>`,
+        scope:`${base}<path d="M72 126 q44 -46 106 -46 q62 0 106 46 q-44 46 -106 46 q-62 0 -106 -46" fill="#fff" stroke="#d9d3ea" stroke-width="8"/><circle cx="178" cy="126" r="30" fill="#d7f2ff"/><circle cx="178" cy="126" r="15" fill="#4c5571"/><circle cx="290" cy="94" r="22" fill="none" stroke="#ffd7e8" stroke-width="9"/><rect x="278" y="110" width="16" height="54" rx="8" fill="#ffd7e8" transform="rotate(-16 286 137)"/>`,
+        biopsy:`${base}<ellipse cx="168" cy="132" rx="80" ry="44" fill="#fff4f9" stroke="#d8d3ea"/><circle cx="150" cy="126" r="10" fill="#ffd2e1"/><circle cx="184" cy="116" r="12" fill="#cfeeff"/><rect x="238" y="88" width="20" height="74" rx="10" fill="#fff0c2"/><rect x="234" y="76" width="28" height="18" rx="9" fill="#ffd7e8"/>`,
+        endoscopy:`${base}<rect x="96" y="100" width="98" height="50" rx="18" fill="#fff" stroke="#d8d3ea"/><circle cx="145" cy="125" r="11" fill="#dff2ff"/><path d="M194 126 q56 -28 98 6" stroke="#b9acdd" stroke-width="8" fill="none" stroke-linecap="round"/><circle cx="300" cy="138" r="10" fill="#ffd7e8"/>`
+      };
+      return `<svg viewBox="0 0 360 240" aria-hidden="true">${map[type] || map.xray}</svg>`;
+    }
+
+    function render(){
+      const item = exams[current];
+      card.classList.toggle('is-flipped', flipped);
+      count.textContent = `${current + 1} / ${exams.length}`;
+      cardInner.innerHTML = `
+        <div class="face front">
+          <div class="head">
+            <span class="chip">${item.classif}</span>
+            <button class="flip-btn" id="flipFront" type="button" aria-label="Ver reverso">↻</button>
+          </div>
+          <div class="front-body">
+            <div class="art">${art(item.icon)}</div>
+            <h2 class="name">${item.name}</h2>
+            <p class="mini">${item.short}</p>
+          </div>
+        </div>
+
+        <div class="face back">
+          <div class="head">
+            <div>
+              <span class="chip">${item.classif}</span>
+              <h2 class="back-title">${item.name}</h2>
+            </div>
+            <button class="flip-btn" id="flipBack" type="button" aria-label="Volver al frente">↺</button>
+          </div>
+          <div class="back-scroll">
+            <div class="row"><span class="label">Clasificación</span><span class="value">${item.classif}</span></div>
+            <div class="row"><span class="label">Qué revisa</span><span class="value">${item.checks}</span></div>
+            <div class="row"><span class="label">Cuándo se recomienda</span><span class="value">${item.recommend}</span></div>
+            <div class="row"><span class="label">Para qué sirve</span><span class="value">${item.purpose}</span></div>
+            <div class="row"><span class="label">En qué especies</span><span class="value">${item.species}</span></div>
+            <div class="row"><span class="label">Qué usa</span><span class="value">${item.uses}</span></div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('flipFront').addEventListener('click', () => {
+        flipped = true;
+        card.classList.add('is-flipped');
+      });
+      document.getElementById('flipBack').addEventListener('click', () => {
+        flipped = false;
+        card.classList.remove('is-flipped');
+      });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      current = (current - 1 + exams.length) % exams.length;
+      flipped = false;
+      render();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % exams.length;
+      flipped = false;
+      render();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { current = (current - 1 + exams.length) % exams.length; flipped = false; render(); }
+      if (e.key === 'ArrowRight') { current = (current + 1) % exams.length; flipped = false; render(); }
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (document.activeElement === prevBtn || document.activeElement === nextBtn) return;
+        e.preventDefault();
+        flipped = !flipped;
+        card.classList.toggle('is-flipped', flipped);
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
+
