@@ -1,0 +1,951 @@
+Put your HTML text here
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fichas didácticas | Exámenes veterinarios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="https://gc.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=EuPiKD_ajqdRkdJ0vljVcs3sezhAwqb00_2rgfvx_Erga80EEDO5Q4hKHor2d3KkvBnIn9g-kxFCy55Kdw3kvDkT1zdYMbtLIn9wiMoXOeMlTiEKcswLpFgSrNYDVywQAqObHOTfwHexUd3rddnWdDmsEY45LrAw-URmJJi5afyeILqajAbb_fB4nhFfIJ1YheGf5MchQ4-gVZ96JaFSHOXnGs12JVgm5FZQa07JM1gvCorOk3CD6gXU_64tAMe6Yky3XBvef0g_lPHpEG3S6Q" charset="UTF-8"></script><style>
+    :root{
+      --bg:#fff9fd;
+      --panel:#ffffff;
+      --ink:#4c4a66;
+      --muted:#7b7996;
+      --pink:#ffd6ea;
+      --pink-2:#ffc1dd;
+      --lav:#e4dcff;
+      --mint:#d9f7ee;
+      --peach:#ffe7d6;
+      --sky:#dff2ff;
+      --yellow:#fff5c8;
+      --line:#efe6f6;
+      --shadow:0 14px 35px rgba(132, 108, 168, .12);
+      --radius:26px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Nunito",system-ui,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, #ffe8f4 0%, transparent 24%),
+        radial-gradient(circle at top right, #e8f5ff 0%, transparent 24%),
+        linear-gradient(180deg, #fffafd 0%, #fffdf7 100%);
+    }
+
+    .wrap{
+      width:min(1220px, calc(100% - 28px));
+      margin:0 auto;
+      padding:26px 0 60px;
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(135deg, #ffe0ef 0%, #e9e1ff 55%, #ddf3ff 100%);
+      border:1.5px solid rgba(255,255,255,.75);
+      border-radius:34px;
+      padding:30px 28px 26px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      opacity:.55;
+      filter:blur(10px);
+      pointer-events:none;
+    }
+
+    .hero::before{
+      width:210px;height:210px;
+      right:-40px; top:-40px;
+      background:#fff4c7;
+    }
+
+    .hero::after{
+      width:160px;height:160px;
+      left:-20px; bottom:-30px;
+      background:#ffe4f0;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:22px;
+      align-items:center;
+      position:relative;
+      z-index:1;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.7);
+      border:1px solid rgba(255,255,255,.85);
+      font-size:.92rem;
+      font-weight:800;
+      color:#6a5b87;
+      letter-spacing:.2px;
+    }
+
+    h1{
+      font-family:"Quicksand", sans-serif;
+      font-size:clamp(2rem, 3vw, 3rem);
+      line-height:1.05;
+      margin:16px 0 12px;
+    }
+
+    .lead{
+      font-size:1.05rem;
+      line-height:1.55;
+      max-width:700px;
+      color:#5c5b79;
+      margin:0 0 16px;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .pill{
+      padding:8px 14px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(255,255,255,.95);
+      border-radius:999px;
+      font-size:.92rem;
+      font-weight:700;
+      color:#6a6281;
+    }
+
+    .pet-stage{
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(255,255,255,.85);
+      border-radius:28px;
+      padding:18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:250px;
+    }
+
+    .toolbar{
+      margin:26px 0 18px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:14px;
+      align-items:center;
+    }
+
+    .searchbox{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:12px 16px;
+      box-shadow:var(--shadow);
+    }
+
+    .searchbox input{
+      border:0;
+      outline:none;
+      width:100%;
+      font:inherit;
+      color:var(--ink);
+      background:transparent;
+    }
+
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:flex-end;
+    }
+
+    .filter-btn{
+      border:1px solid var(--line);
+      background:#fff;
+      color:#6a6582;
+      border-radius:999px;
+      padding:10px 14px;
+      font:700 .92rem "Nunito",sans-serif;
+      cursor:pointer;
+      transition:.2s ease;
+      box-shadow:0 8px 18px rgba(132,108,168,.08);
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover{
+      transform:translateY(-2px);
+      background:linear-gradient(135deg, #ffd8ea, #e7e0ff);
+      border-color:#ead6f6;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(220px, 1fr));
+      gap:18px;
+    }
+
+    .card{
+      perspective:1200px;
+      min-height:390px;
+    }
+
+    .card.hide{display:none}
+
+    .card-inner{
+      position:relative;
+      width:100%;
+      height:100%;
+      min-height:390px;
+      transform-style:preserve-3d;
+      transition:transform .8s ease;
+    }
+
+    .card:hover .card-inner,
+    .card:focus-within .card-inner,
+    .card.flipped .card-inner{
+      transform:rotateY(180deg);
+    }
+
+    .face{
+      position:absolute;
+      inset:0;
+      backface-visibility:hidden;
+      border-radius:28px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .front{
+      justify-content:space-between;
+      padding:18px 18px 16px;
+    }
+
+    .back{
+      transform:rotateY(180deg);
+      padding:18px;
+    }
+
+    .tag{
+      align-self:flex-start;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:800;
+      letter-spacing:.2px;
+      color:#655d7d;
+      background:#fff7fb;
+      border:1px solid #f3e0ee;
+    }
+
+    .art{
+      flex:1;
+      display:grid;
+      place-items:center;
+      padding:8px 6px;
+    }
+
+    .title{
+      text-align:center;
+      font-family:"Quicksand", sans-serif;
+      font-size:1.26rem;
+      font-weight:800;
+      line-height:1.15;
+      margin:10px 0 6px;
+      color:#514d6b;
+    }
+
+    .mini{
+      text-align:center;
+      font-size:.92rem;
+      color:var(--muted);
+      margin:0;
+    }
+
+    .hint{
+      margin-top:12px;
+      text-align:center;
+      font-size:.82rem;
+      color:#9a93aa;
+    }
+
+    .back h3{
+      margin:0 0 12px;
+      font-size:1.08rem;
+      font-family:"Quicksand",sans-serif;
+    }
+
+    .info-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .info{
+      background:#fffafb;
+      border:1px solid #f2e9f6;
+      border-radius:18px;
+      padding:10px 12px;
+    }
+
+    .info b{
+      display:block;
+      font-size:.84rem;
+      color:#8a7aa9;
+      margin-bottom:3px;
+      text-transform:uppercase;
+      letter-spacing:.35px;
+    }
+
+    .info span{
+      display:block;
+      line-height:1.42;
+      font-size:.94rem;
+      color:#564f6d;
+    }
+
+    .legend{
+      margin-top:26px;
+      background:#ffffffcc;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .legend h2,
+    .sources h2{
+      margin:0 0 14px;
+      font-size:1.2rem;
+      font-family:"Quicksand", sans-serif;
+    }
+
+    .legend-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .legend-item{
+      border-radius:18px;
+      padding:14px;
+      background:#fff;
+      border:1px solid var(--line);
+    }
+
+    .legend-item strong{display:block; margin-bottom:6px}
+    .sources{
+      margin-top:18px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .sources ul{
+      margin:0;
+      padding-left:18px;
+      line-height:1.6;
+      color:#5d5774;
+    }
+
+    .sources a{
+      color:#7b5cb1;
+      text-decoration:none;
+    }
+
+    .footer{
+      margin-top:24px;
+      text-align:center;
+      color:#847f98;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);border:0;
+    }
+
+    @media (max-width: 1040px){
+      .cards{grid-template-columns:repeat(3,minmax(220px,1fr));}
+      .legend-grid{grid-template-columns:repeat(2,1fr)}
+      .hero-grid{grid-template-columns:1fr}
+      .pet-stage{min-height:190px}
+    }
+
+    @media (max-width: 760px){
+      .wrap{width:min(100% - 16px, 100%)}
+      .toolbar{grid-template-columns:1fr}
+      .filters{justify-content:flex-start}
+      .cards{grid-template-columns:repeat(2,minmax(160px,1fr));}
+      .card,.card-inner{min-height:410px}
+    }
+
+    @media (max-width: 520px){
+      .cards{grid-template-columns:1fr;}
+      .legend-grid{grid-template-columns:1fr}
+      .hero{padding:22px 18px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">🐾 Fichas veterinarias</span>
+          <h1>Tipos de exámenes <br></h1>
+         
+          
+        </div>
+        <div class="pet-stage" aria-hidden="true">
+          <svg viewBox="0 0 380 250" width="100%" height="100%">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0%" stop-color="#ffd9ea"/>
+                <stop offset="100%" stop-color="#e4ddff"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" x2="1">
+                <stop offset="0%" stop-color="#dff5ff"/>
+                <stop offset="100%" stop-color="#e6fff4"/>
+              </linearGradient>
+            </defs>
+            <rect x="20" y="25" rx="30" ry="30" width="340" height="190" fill="url(#g2)" opacity="0.95"/>
+            <circle cx="82" cy="67" r="18" fill="#fff1a8"/>
+            <g transform="translate(42,88)">
+              <ellipse cx="70" cy="78" rx="54" ry="42" fill="#fff3f8" stroke="#d7c5db"/>
+              <circle cx="40" cy="48" r="18" fill="#fff3f8" stroke="#d7c5db"/>
+              <circle cx="100" cy="48" r="18" fill="#fff3f8" stroke="#d7c5db"/>
+              <circle cx="57" cy="75" r="4" fill="#504a63"/>
+              <circle cx="82" cy="75" r="4" fill="#504a63"/>
+              <ellipse cx="69.5" cy="88" rx="8" ry="6" fill="#ffb7c9"/>
+              <path d="M63 96 Q70 104 77 96" stroke="#7a6d89" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="49" cy="84" r="6" fill="#ffd2df"/>
+              <circle cx="91" cy="84" r="6" fill="#ffd2df"/>
+              <path d="M27 24 L36 8 L47 30" fill="#fff3f8" stroke="#d7c5db"/>
+              <path d="M92 30 L104 8 L112 24" fill="#fff3f8" stroke="#d7c5db"/>
+            </g>
+            <g transform="translate(180,85)">
+              <ellipse cx="75" cy="82" rx="58" ry="46" fill="#fffef7" stroke="#d9cfbe"/>
+              <circle cx="58" cy="42" r="24" fill="#fffef7" stroke="#d9cfbe"/>
+              <circle cx="106" cy="46" r="20" fill="#fffef7" stroke="#d9cfbe"/>
+              <path d="M33 28 Q49 0 68 22" fill="#fffef7" stroke="#d9cfbe"/>
+              <path d="M95 24 Q111 -2 126 22" fill="#fffef7" stroke="#d9cfbe"/>
+              <circle cx="64" cy="48" r="4" fill="#514d67"/>
+              <circle cx="95" cy="50" r="4" fill="#514d67"/>
+              <ellipse cx="79" cy="64" rx="9" ry="6" fill="#ffbfcc"/>
+              <path d="M73 71 Q79 77 86 71" stroke="#7a6d89" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="52" cy="60" r="6" fill="#ffe0de"/>
+              <circle cx="104" cy="63" r="6" fill="#ffe0de"/>
+            </g>
+            <path d="M130 193 Q190 214 250 193" stroke="#ccbfe0" stroke-width="6" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+  
+
+    <section class="cards" id="cardsGrid">
+
+      <article class="card" data-category="imagen" data-search="radiografia rx rayos x perros gatos conejos aves huesos pulmones fracturas imagenologia">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Imagenología</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <rect x="20" y="20" width="180" height="130" rx="24" fill="#ece7ff"/>
+                <rect x="35" y="35" width="150" height="100" rx="18" fill="#3e4665"/>
+                <g transform="translate(60,38)">
+                  <circle cx="50" cy="22" r="16" fill="#d7f5ff" opacity=".85"/>
+                  <rect x="42" y="36" width="16" height="38" rx="8" fill="#d7f5ff"/>
+                  <rect x="32" y="48" width="36" height="12" rx="6" fill="#d7f5ff"/>
+                  <rect x="34" y="77" width="9" height="28" rx="4" fill="#d7f5ff"/>
+                  <rect x="57" y="77" width="9" height="28" rx="4" fill="#d7f5ff"/>
+                  <path d="M95 38 q9 10 0 20" stroke="#ffd0dc" stroke-width="6" fill="none" stroke-linecap="round"/>
+                  <path d="M105 33 q14 16 0 32" stroke="#ffd0dc" stroke-width="6" fill="none" stroke-linecap="round"/>
+                </g>
+                <circle cx="172" cy="44" r="8" fill="#fff3a6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Radiografía (RX)</div>
+              <p class="mini">Voltea para ver qué tipo de examen es.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Radiografía (RX)</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen de diagnóstico por imágenes.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Huesos, tórax, pulmones, abdomen y algunas estructuras dentales.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Ayuda a detectar fracturas, cuerpos extraños, cambios pulmonares, tamaño de órganos y problemas óseos.</span></div>
+              <div class="info"><b>Especies</b><span>Muy común en perros y gatos; también se usa en conejos, aves y otros pequeños animales.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Equipo de rayos X y receptor digital o placa radiográfica.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="imagen" data-search="ecografia ultrasonido ultrasound perros gatos abdomen gestacion organos blandos imagenologia">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Imagenología</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <rect x="30" y="22" width="105" height="82" rx="18" fill="#dff3ff"/>
+                <rect x="42" y="34" width="82" height="58" rx="14" fill="#40506a"/>
+                <path d="M58 70 Q78 42 107 57 Q84 82 58 70" fill="#8ff0d5" opacity=".85"/>
+                <rect x="82" y="105" width="18" height="25" rx="8" fill="#c3b8e8"/>
+                <rect x="68" y="127" width="46" height="10" rx="5" fill="#c3b8e8"/>
+                <path d="M135 92 C154 72, 175 66, 188 74 C198 81,194 96,181 102 L171 106 L151 127 L138 112 L154 98" fill="#ffd8e8" stroke="#d9bfd0"/>
+                <circle cx="178" cy="84" r="5" fill="#514b67"/>
+                <path d="M122 88 C132 94,136 102,132 112" stroke="#bdb2e0" stroke-width="8" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Ecografía</div>
+              <p class="mini">También llamada ultrasonido.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Ecografía</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen de diagnóstico por imágenes con ultrasonido.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Órganos blandos como hígado, riñones, vejiga, bazo, útero y también gestación.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Permite valorar tamaño, forma y textura de órganos, buscar masas, líquido y revisar embarazo.</span></div>
+              <div class="info"><b>Especies</b><span>Frecuente en perros y gatos; también se usa en exóticos y animales de producción.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Ecógrafo y transductor con gel conductor.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="imagen" data-search="tac tomografia axial computarizada ct perros gatos cabeza columna torax trauma imagenologia">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Imagenología avanzada</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <rect x="22" y="54" width="176" height="70" rx="30" fill="#e7fff7"/>
+                <circle cx="112" cy="89" r="35" fill="#ffffff" stroke="#cdeade" stroke-width="10"/>
+                <circle cx="112" cy="89" r="12" fill="#f9f2ff"/>
+                <rect x="26" y="117" width="168" height="18" rx="9" fill="#d2c9ef"/>
+                <rect x="72" y="74" width="76" height="10" rx="5" fill="#ffd8e9"/>
+                <path d="M55 43 h18" stroke="#fff0a8" stroke-width="10" stroke-linecap="round"/>
+                <path d="M64 34 v18" stroke="#fff0a8" stroke-width="10" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">TAC / TC</div>
+              <p class="mini">Tomografía computarizada.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>TAC / TC</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen avanzado de diagnóstico por imágenes.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Da cortes detallados de cabeza, columna, tórax, cavidad nasal, huesos y algunas masas.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Se usa cuando se necesita más detalle que una radiografía, por ejemplo en trauma, cirugía o lesiones complejas.</span></div>
+              <div class="info"><b>Especies</b><span>Principalmente perros y gatos; también en pacientes exóticos según disponibilidad.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Tomógrafo; muchas veces requiere inmovilidad estricta y puede necesitar sedación o anestesia.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="laboratorio" data-search="cbc hemograma cuadro hematico sangre perros gatos anemia infeccion plaquetas laboratorio">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Laboratorio</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <rect x="55" y="24" width="38" height="94" rx="12" fill="#f5f1ff" stroke="#d4c7ec"/>
+                <rect x="60" y="59" width="28" height="54" rx="8" fill="#ffadc6"/>
+                <rect x="127" y="24" width="38" height="94" rx="12" fill="#f5f1ff" stroke="#d4c7ec"/>
+                <rect x="132" y="52" width="28" height="61" rx="8" fill="#ffc9a7"/>
+                <circle cx="74" cy="138" r="12" fill="#ffe9f2"/>
+                <circle cx="146" cy="138" r="12" fill="#e9fbff"/>
+                <circle cx="104" cy="42" r="10" fill="#fff4ae"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Hemograma / CBC</div>
+              <p class="mini">Examen básico de sangre.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Hemograma completo (CBC)</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen de laboratorio hematológico.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Glóbulos rojos, glóbulos blancos, plaquetas, tamaño y forma de algunas células.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Ayuda a detectar anemia, infección, inflamación, deshidratación y alteraciones en coagulación.</span></div>
+              <div class="info"><b>Especies</b><span>Muy usado en perros y gatos; también en aves, conejos y otros pacientes.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Muestra de sangre completa tomada en tubo con anticoagulante.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="laboratorio" data-search="quimica serica perfil bioquimico sangre higado rinon glucosa proteinas laboratorio perros gatos">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Laboratorio</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <rect x="46" y="38" width="128" height="78" rx="18" fill="#e6f8ff"/>
+                <rect x="58" y="50" width="104" height="54" rx="12" fill="#ffffff"/>
+                <path d="M70 87 h28" stroke="#ffb3c9" stroke-width="10" stroke-linecap="round"/>
+                <path d="M70 72 h45" stroke="#d9ceff" stroke-width="10" stroke-linecap="round"/>
+                <path d="M125 72 h18" stroke="#b7f0de" stroke-width="10" stroke-linecap="round"/>
+                <circle cx="165" cy="39" r="12" fill="#fff2a9"/>
+                <circle cx="170" cy="127" r="10" fill="#ffddeb"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Química sérica</div>
+              <p class="mini">Perfil bioquímico sanguíneo.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Química sérica</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen de laboratorio bioquímico.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Parámetros relacionados con hígado, riñones, glucosa, proteínas, electrolitos y metabolismo.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Sirve para evaluar función orgánica, detectar enfermedad sistémica y apoyar controles prequirúrgicos.</span></div>
+              <div class="info"><b>Especies</b><span>Muy común en perros y gatos; adaptable a otras especies según el laboratorio.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Suero o plasma obtenido a partir de una muestra de sangre.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="laboratorio" data-search="urianalisis orina vejiga rinones diabetes infeccion urinaria perros gatos laboratorio">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Laboratorio</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <path d="M96 26 h28 v18 l18 28 a38 38 0 1 1 -82 0 l18 -28 V26 h18" fill="#f4f0ff" stroke="#d6caee" stroke-width="3"/>
+                <path d="M82 75 h56 a28 28 0 0 1 -56 0z" fill="#ffd46e" opacity=".75"/>
+                <circle cx="150" cy="50" r="10" fill="#e6fbff"/>
+                <circle cx="163" cy="64" r="5" fill="#e6fbff"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Urianálisis</div>
+              <p class="mini">Estudio de la orina.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Urianálisis</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen de laboratorio urinario.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Aspecto físico y químico de la orina: densidad, glucosa, proteínas, sangre, sedimento y cristales.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Ayuda a valorar riñones y vías urinarias, y también puede orientar sobre diabetes o infecciones.</span></div>
+              <div class="info"><b>Especies</b><span>Muy usado en perros y gatos; también en otros pequeños animales.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Muestra de orina recolectada de forma espontánea, por sondaje o cistocentesis.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="laboratorio" data-search="coprologico fecal flotacion heces parasitos giardia gusanos perros gatos cachorros laboratorio">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Laboratorio</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <rect x="54" y="44" width="112" height="82" rx="20" fill="#fff7df" stroke="#eadfb0"/>
+                <circle cx="88" cy="83" r="18" fill="#b7f0de"/>
+                <path d="M120 96 q16 -24 32 0 q-16 22 -32 0z" fill="#ffd5e6"/>
+                <circle cx="83" cy="78" r="3" fill="#475068"/>
+                <circle cx="94" cy="78" r="3" fill="#475068"/>
+                <path d="M82 88 q6 6 12 0" stroke="#5d5574" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M126 79 q8 -10 16 0" stroke="#5d5574" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M141 79 q8 10 0 20" stroke="#5d5574" stroke-width="3" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Coprológico / Fecal</div>
+              <p class="mini">Incluye flotación fecal.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Coprológico / flotación fecal</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen de laboratorio parasitológico.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Busca huevos de parásitos, algunos protozoos y otros hallazgos en la materia fecal.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Permite detectar gusanos intestinales y orientar el control antiparasitario.</span></div>
+              <div class="info"><b>Especies</b><span>Muy frecuente en perros y gatos, especialmente cachorros; también en otras especies.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Muestra fresca de heces y soluciones de flotación o técnicas microscópicas.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="laboratorio" data-search="citologia microscopio celulas piel oido fluidos masas perros gatos laboratorio">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Laboratorio</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <path d="M89 38 a18 18 0 0 1 29 14 v12 h18 v17 h-28 l19 28 h-19 l-17 -25 -17 10 -9 -16 17 -10 -9 -15 16 -9 11 18 h10 V52 a18 18 0 0 0 -21 -14z" fill="#dfe8ff" stroke="#c7d2f0" stroke-width="3"/>
+                <circle cx="151" cy="47" r="11" fill="#fff2a8"/>
+                <circle cx="54" cy="122" r="12" fill="#ffd7e7"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Citología</div>
+              <p class="mini">Células vistas al microscopio.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Citología</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen de laboratorio microscópico.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Estudia células recolectadas de piel, oído, masas, líquidos o superficies corporales.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Ayuda a identificar inflamación, infección, levaduras, bacterias y algunos tipos de tumores.</span></div>
+              <div class="info"><b>Especies</b><span>Muy usado en perros y gatos; también se aplica en otras especies según el caso.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Portaobjetos, muestras por impronta, hisopo, raspado o extensión, y microscopio.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="laboratorio" data-search="aspirado aguja fina fna masa tumor nodulo perro gato laboratorio citologia">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Laboratorio / procedimiento</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <rect x="36" y="72" width="92" height="24" rx="12" fill="#e4dcff"/>
+                <rect x="118" y="78" width="56" height="12" rx="6" fill="#ffc6da"/>
+                <path d="M173 84 h22" stroke="#93d8ff" stroke-width="4" stroke-linecap="round"/>
+                <path d="M195 84 l10 -4 l0 8 z" fill="#93d8ff"/>
+                <circle cx="70" cy="59" r="14" fill="#fff2aa"/>
+                <circle cx="84" cy="115" r="13" fill="#ffe4ef"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Aspirado con aguja fina (FNA)</div>
+              <p class="mini">Muestra de masas o nódulos.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Aspirado con aguja fina (FNA)</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Procedimiento de toma de muestra para citología.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Obtiene células de bultos, ganglios, órganos o acumulaciones de líquido.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Se usa para orientar si una masa es inflamatoria, quística o compatible con neoplasia.</span></div>
+              <div class="info"><b>Especies</b><span>Muy frecuente en perros y gatos; también útil en otras especies.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Aguja fina, jeringa y láminas para enviar o revisar la muestra.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="cardio" data-search="ecg ekg electrocardiograma arritmia corazon perros gatos cardiologia">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Cardiología</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <rect x="32" y="37" width="156" height="96" rx="20" fill="#e8fbff"/>
+                <path d="M48 90 h25 l10 -20 l14 39 l12 -26 h17 l9 -12 h28" stroke="#ff8cb3" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+                <circle cx="166" cy="56" r="10" fill="#fff0a9"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Electrocardiograma (ECG)</div>
+              <p class="mini">Actividad eléctrica del corazón.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Electrocardiograma (ECG)</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen funcional cardiológico.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Registra la actividad eléctrica del corazón y el ritmo cardiaco.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Ayuda a detectar arritmias, alteraciones de conducción y cambios que requieren estudio cardiaco.</span></div>
+              <div class="info"><b>Especies</b><span>Muy usado en perros y gatos; también en otras especies con sospecha cardiaca.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Electrodos colocados en puntos del cuerpo y un equipo de ECG.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="cardio" data-search="ecocardiograma ecocardiografia ultrasonido corazon valvulas flujo perros gatos cardiologia">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Cardiología</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <path d="M110 120 C65 92 49 73 49 51 a23 23 0 0 1 41 -15 l20 20 l20 -20 a23 23 0 0 1 41 15 c0 22 -16 41 -61 69z" fill="#ffb8cf" stroke="#e79eb7" stroke-width="3"/>
+                <circle cx="168" cy="49" r="12" fill="#fff3ac"/>
+                <path d="M82 80 q14 -14 30 0 q-15 18 -30 0z" fill="#ffffff" opacity=".7"/>
+                <path d="M114 76 q16 -12 28 5" stroke="#8fdfff" stroke-width="6" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Ecocardiograma</div>
+              <p class="mini">Ultrasonido del corazón.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Ecocardiograma</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen cardiológico de imagen por ultrasonido.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Tamaño del corazón, movimiento, válvulas y flujo sanguíneo.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Permite valorar soplos, cardiomiopatías, insuficiencia valvular y otros problemas estructurales.</span></div>
+              <div class="info"><b>Especies</b><span>Muy frecuente en perros y gatos con sospecha de enfermedad cardiaca.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Ecógrafo especializado, transductor y, a veces, Doppler.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="piel" data-search="raspado cutaneo piel acaros sarna demodex perro gato dermatologia">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Piel</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <rect x="55" y="34" width="110" height="84" rx="26" fill="#ffe9d7" stroke="#ebd3c1" stroke-width="3"/>
+                <path d="M118 44 q18 22 0 44" stroke="#ffb0c8" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <circle cx="83" cy="74" r="8" fill="#ffd5e3"/>
+                <circle cx="136" cy="82" r="8" fill="#dff7ef"/>
+                <path d="M160 38 l20 20" stroke="#b8ace1" stroke-width="8" stroke-linecap="round"/>
+                <path d="M153 45 l13 13" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Raspado cutáneo</div>
+              <p class="mini">Examen dermatológico.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Raspado cutáneo</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Examen dermatológico microscópico.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Muestra superficial o profunda de piel para buscar ácaros y otros cambios cutáneos.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Se usa para investigar sarna, demodicosis y algunos problemas de piel con picazón o pérdida de pelo.</span></div>
+              <div class="info"><b>Especies</b><span>Muy común en perros y gatos; también en conejos y otras especies según el caso.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Hoja de bisturí o instrumento de raspado, aceite mineral y microscopio.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-category="ojos" data-search="fluoresceina ojo ulcera corneal lagrimal perros gatos oftalmologia">
+        <div class="card-inner">
+          <div class="face front">
+            <span class="tag">Ojos</span>
+            <div class="art" aria-hidden="true">
+              <svg viewBox="0 0 220 170" width="88%">
+                <path d="M35 85 Q74 40 110 40 Q146 40 185 85 Q146 130 110 130 Q74 130 35 85z" fill="#e7fbff" stroke="#c6e8f1" stroke-width="4"/>
+                <circle cx="110" cy="85" r="28" fill="#9af0d2"/>
+                <circle cx="110" cy="85" r="11" fill="#4d556f"/>
+                <circle cx="120" cy="76" r="4" fill="#fff"/>
+                <path d="M177 39 l18 30" stroke="#ffbdd5" stroke-width="10" stroke-linecap="round"/>
+                <path d="M180 39 h22" stroke="#ffbdd5" stroke-width="6" stroke-linecap="round"/>
+                <circle cx="60" cy="43" r="10" fill="#fff0ab"/>
+              </svg>
+            </div>
+            <div>
+              <div class="title">Tinción con fluoresceína</div>
+              <p class="mini">Prueba oftálmica rápida.</p>
+              <p class="hint">Pasa el cursor o toca la tarjeta ✨</p>
+            </div>
+          </div>
+          <div class="face back">
+            <h3>Tinción con fluoresceína</h3>
+            <div class="info-list">
+              <div class="info"><b>Tipo</b><span>Prueba oftalmológica diagnóstica.</span></div>
+              <div class="info"><b>Qué revisa</b><span>Superficie corneal y, en algunos casos, paso del tinte por el conducto lagrimal.</span></div>
+              <div class="info"><b>Para qué sirve</b><span>Ayuda a detectar úlceras o lesiones en córnea y valorar drenaje lagrimal.</span></div>
+              <div class="info"><b>Especies</b><span>Muy frecuente en perros y gatos; también se usa en otros animales con problemas oculares.</span></div>
+              <div class="info"><b>Qué se usa</b><span>Gota o tira con fluoresceína y luz adecuada para observar la tinción.</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+  
+    <div class="footer">Aprendiendo con @LaProfeVivy</div>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+    const searchInput = document.getElementById('searchInput');
+    let activeFilter = 'all';
+
+    function applyFilters(){
+      const term = searchInput.value.trim().toLowerCase();
+      cards.forEach(card => {
+        const category = card.dataset.category;
+        const text = card.dataset.search;
+        const matchesFilter = activeFilter === 'all' || category === activeFilter;
+        const matchesSearch = !term || text.includes(term);
+        card.classList.toggle('hide', !(matchesFilter && matchesSearch));
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener('input', applyFilters);
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+          card.classList.toggle('flipped');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
