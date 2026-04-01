@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anatomía veterinaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://gc.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=3jpEnSUANDZ73Ed2NGSFbyME8mfk9tB0jFBdeNWLLb0LNvhtsW8ZrNnTqFqQzw5ahB9lyPlr1HsLL4EHk9-mlFQgGLYjQwZ_ueiQXll_BGePWc0BnVgHoxnMv7y0S6EWbbpXcmqnrlX-JDzYh7M9cnfWrtOTmaxQeojDAwKDXAvpI_MGpXjyGQ3ejEZgGAIRJRNMw5puIVmt1YR5wgWUEyE51gO_Z5-s4-Xu0FnZhwfXGmgThAM7WfUdYCtVULHmc16rhf9JBv8bBM8_ciSEsA" charset="UTF-8"></script><style>
+:root{
+  --bg:#fff9fd;
+  --panel:#ffffff;
+  --ink:#4c4a66;
+  --muted:#7b7996;
+  --pink:#ffd6ea;
+  --pink-2:#ffc1dd;
+  --lav:#e4dcff;
+  --mint:#d9f7ee;
+  --peach:#ffe7d6;
+  --sky:#dff2ff;
+  --yellow:#fff5c8;
+  --line:#efe6f6;
+  --shadow:0 14px 35px rgba(132, 108, 168, .12);
+  --radius:26px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Nunito",system-ui,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left, #ffe8f4 0%, transparent 24%),
+    radial-gradient(circle at top right, #e8f5ff 0%, transparent 24%),
+    linear-gradient(180deg, #fffafd 0%, #fffdf7 100%);
+}
+.wrap{
+  width:min(1420px, calc(100% - 32px));
+  margin:0 auto;
+  padding:22px 0 34px;
+}
+h1{
+  margin:6px 0 20px;
+  text-align:center;
+  font-family:"Quicksand",sans-serif;
+  font-size:clamp(2rem, 4vw, 3.4rem);
+  line-height:1.05;
+  color:#4f4a69;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:18px;
+}
+.block{
+  display:flex;
+  flex-direction:column;
+  min-height:620px;
+  background:rgba(255,255,255,.82);
+  border:1px solid var(--line);
+  border-radius:30px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  backdrop-filter: blur(3px);
+}
+.block-head{
+  padding:17px 18px 14px;
+  background:linear-gradient(135deg, #ffe0ef 0%, #e9e1ff 58%, #ddf3ff 100%);
+  border-bottom:1px solid rgba(239,230,246,.9);
+}
+.block-head h2{
+  margin:0;
+  font-family:"Quicksand",sans-serif;
+  font-size:1.26rem;
+  line-height:1.12;
+}
+.block-head p{
+  margin:6px 0 0;
+  color:#6d6886;
+  font-size:.95rem;
+  line-height:1.35;
+}
+.viewer{
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  flex:1;
+}
+.card-shell{
+  flex:1;
+  min-height:0;
+}
+.card{
+  perspective:1200px;
+  width:100%;
+  height:100%;
+  min-height:468px;
+}
+.card-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:468px;
+  transform-style:preserve-3d;
+  transition:transform .78s ease;
+}
+.card.flipped .card-inner{transform:rotateY(180deg);}
+.face{
+  position:absolute;
+  inset:0;
+  backface-visibility:hidden;
+  border-radius:26px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  box-shadow:0 10px 28px rgba(132,108,168,.10);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.front{
+  padding:16px 16px 18px;
+}
+.back{
+  transform:rotateY(180deg);
+  padding:16px;
+  background:linear-gradient(180deg, #fffefd 0%, #fff9fd 100%);
+}
+.card-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+.classif{
+  font-size:.8rem;
+  font-weight:800;
+  color:#7a7393;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  line-height:1.28;
+  padding-top:4px;
+}
+.controls{display:flex; gap:8px; flex-shrink:0;}
+.icon-btn{
+  width:40px; height:40px;
+  display:grid; place-items:center;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:#645d7d;
+  font:800 1rem "Nunito",sans-serif;
+  box-shadow:0 8px 18px rgba(132,108,168,.08);
+  cursor:pointer;
+  transition:.18s ease;
+}
+.icon-btn:hover{transform:translateY(-2px); background:#fff8fc;}
+.art-box{
+  flex:1;
+  min-height:228px;
+  margin:14px 0 10px;
+  border-radius:24px;
+  border:1px solid #f1e8f6;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.85)),
+    linear-gradient(135deg, #fff5fb 0%, #eff8ff 100%);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.art-box svg{width:100%; height:100%; min-height:228px;}
+.card-title{
+  margin:4px 0 0;
+  text-align:center;
+  font-family:"Quicksand",sans-serif;
+  font-size:clamp(1.15rem, 2vw, 1.5rem);
+  line-height:1.16;
+  color:#514d6b;
+}
+.back-head h3{
+  margin:0;
+  font-family:"Quicksand",sans-serif;
+  font-size:1.18rem;
+  line-height:1.15;
+}
+.back-head .back-sub{
+  margin:6px 0 0;
+  font-size:.8rem;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#877aa4;
+}
+.back-scroll{
+  margin-top:12px;
+  display:grid;
+  gap:10px;
+  overflow:auto;
+  padding-right:4px;
+}
+.info{
+  background:#fffafb;
+  border:1px solid #f2e9f6;
+  border-radius:18px;
+  padding:12px 13px;
+}
+.info b{
+  display:block;
+  margin-bottom:5px;
+  font-size:.82rem;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:#8a7aa9;
+}
+.info span{
+  display:block;
+  font-size:.96rem;
+  line-height:1.46;
+  color:#57506d;
+}
+.block-footer{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:12px;
+  align-items:center;
+}
+.nav-btn{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  background:#fff;
+  color:#6a6582;
+  border-radius:999px;
+  padding:0;
+  font:800 1.18rem "Nunito",sans-serif;
+  cursor:pointer;
+  transition:.18s ease;
+  box-shadow:0 8px 18px rgba(132,108,168,.08);
+}
+.nav-btn:hover{transform:translateY(-2px); background:linear-gradient(135deg, #ffd8ea, #e7e0ff);}
+.counter{
+  text-align:center;
+  font-size:.92rem;
+  font-weight:800;
+  color:#706987;
+}
+.footer-brand{
+  text-align:center;
+  margin-top:18px;
+  color:#8a82a1;
+  font-size:.9rem;
+}
+@media (max-width:1180px){
+  .grid{grid-template-columns:repeat(2, minmax(0,1fr));}
+}
+@media (max-width:760px){
+  .wrap{width:min(100%, calc(100% - 12px)); padding:12px 0 22px;}
+  .grid{grid-template-columns:1fr; gap:12px;}
+  h1{margin:2px 0 12px; font-size:clamp(1.75rem, 8vw, 2.35rem);}
+  .block{min-height:auto; border-radius:24px;}
+  .block-head{padding:14px 14px 12px;}
+  .block-head h2{font-size:1.12rem;}
+  .block-head p{font-size:.88rem; line-height:1.3;}
+  .viewer{padding:10px; gap:10px;}
+  .card{min-height:406px;}
+  .card-inner{min-height:406px;}
+  .front,.back{padding:12px;}
+  .classif{font-size:.74rem;}
+  .art-box{min-height:170px; margin:10px 0 8px; border-radius:20px;}
+  .art-box svg{min-height:170px;}
+  .card-title{font-size:1.08rem;}
+  .back-head h3{font-size:1.08rem;}
+  .back-head .back-sub{font-size:.72rem;}
+  .back-scroll{margin-top:10px; gap:8px;}
+  .info{padding:10px 11px; border-radius:16px;}
+  .info b{font-size:.78rem; margin-bottom:4px;}
+  .info span{font-size:.92rem; line-height:1.38;}
+  .block-footer{gap:8px;}
+  .nav-btn{width:42px; height:42px; font-size:1.08rem;}
+  .counter{font-size:.86rem;}
+  .icon-btn{width:36px;height:36px;}
+}
+@media (max-width:420px){
+  .wrap{width:min(100%, calc(100% - 10px));}
+  .card{min-height:392px;}
+  .card-inner{min-height:392px;}
+  .art-box{min-height:158px;}
+  .art-box svg{min-height:158px;}
+  .info span{font-size:.9rem;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Anatomía veterinaria</h1>
+  <section id="grid" class="grid" aria-label="Bloques de anatomía veterinaria"></section>
+  <div class="footer-brand">Aprendiendo con @LaProfeVivy</div>
+</div>
+
+<script>
+const DATA = [{"title": "Términos", "subtitle": "Situación, miembros y vocabulario anatómico básico", "items": [{"title": "Mediano", "section": "Situación y orientación", "label": "Situación", "definition": "Se ubica en la línea media o plano medio del cuerpo.", "icon": "orientation", "detail": "Sirve para describir estructuras centradas, no desplazadas hacia un lado."}, {"title": "Sagital", "section": "Situación y orientación", "label": "Situación", "definition": "Se orienta paralelo al plano mediano.", "icon": "orientation", "detail": "Ayuda a describir cortes o estructuras que van de craneal a caudal."}, {"title": "Transversal", "section": "Situación y orientación", "label": "Situación", "definition": "Forma un corte perpendicular al eje largo del cuerpo o de una parte.", "icon": "orientation", "detail": "Se usa para dividir una estructura en porción craneal/caudal o proximal/distal."}, {"title": "Medial", "section": "Situación y orientación", "label": "Situación", "definition": "Está más cerca de la línea media del cuerpo.", "icon": "orientation", "detail": "Se contrasta con lateral."}, {"title": "Intermedio", "section": "Situación y orientación", "label": "Situación", "definition": "Se localiza entre dos estructuras.", "icon": "orientation", "detail": "Útil cuando algo no es completamente medial ni lateral."}, {"title": "Lateral", "section": "Situación y orientación", "label": "Situación", "definition": "Está más alejado de la línea media.", "icon": "orientation", "detail": "Se contrasta con medial."}, {"title": "Craneal", "section": "Situación y orientación", "label": "Dirección", "definition": "Apunta hacia la cabeza.", "icon": "orientation", "detail": "En cuadrúpedos reemplaza muchas veces a 'superior'."}, {"title": "Caudal", "section": "Situación y orientación", "label": "Dirección", "definition": "Apunta hacia la cola.", "icon": "orientation", "detail": "Es el opuesto de craneal."}, {"title": "Anterior", "section": "Situación y orientación", "label": "Dirección", "definition": "Se sitúa hacia la parte delantera de una región.", "icon": "orientation", "detail": "Es un término más general; en veterinaria suele preferirse craneal según la zona."}, {"title": "Rostral", "section": "Situación y orientación", "label": "Dirección", "definition": "Apunta hacia el hocico o pico.", "icon": "orientation", "detail": "Se usa sobre todo en la cabeza."}, {"title": "Posterior", "section": "Situación y orientación", "label": "Dirección", "definition": "Se sitúa hacia la parte trasera de una región.", "icon": "orientation", "detail": "En veterinaria suele alternarse con caudal según la zona."}, {"title": "Dorsal", "section": "Situación y orientación", "label": "Superficie", "definition": "Se orienta hacia el dorso o espalda.", "icon": "orientation", "detail": "En las extremidades distales cambia según la cara anatómica."}, {"title": "Ventral", "section": "Situación y orientación", "label": "Superficie", "definition": "Se orienta hacia el vientre.", "icon": "orientation", "detail": "Es el opuesto de dorsal."}, {"title": "Superior", "section": "Situación y orientación", "label": "Posición", "definition": "Indica una posición más alta dentro de una referencia.", "icon": "orientation", "detail": "Se usa con menor frecuencia que craneal o dorsal en cuadrúpedos."}, {"title": "Inferior", "section": "Situación y orientación", "label": "Posición", "definition": "Indica una posición más baja dentro de una referencia.", "icon": "orientation", "detail": "Se usa como relación opuesta a superior."}, {"title": "Interno", "section": "Situación y orientación", "label": "Relación", "definition": "Está hacia el interior de un órgano o cavidad.", "icon": "orientation", "detail": "Se contrasta con externo."}, {"title": "Externo", "section": "Situación y orientación", "label": "Relación", "definition": "Está hacia fuera de un órgano o cavidad.", "icon": "orientation", "detail": "Se contrasta con interno."}, {"title": "Derecha", "section": "Situación y orientación", "label": "Lado", "definition": "Corresponde al lado derecho del animal.", "icon": "orientation", "detail": "Siempre se toma desde la perspectiva del animal."}, {"title": "Izquierda", "section": "Situación y orientación", "label": "Lado", "definition": "Corresponde al lado izquierdo del animal.", "icon": "orientation", "detail": "Siempre se toma desde la perspectiva del animal."}, {"title": "Longitudinal", "section": "Situación y orientación", "label": "Eje", "definition": "Sigue el eje largo de una estructura.", "icon": "orientation", "detail": "Ayuda a describir trayectos o cortes paralelos al cuerpo."}, {"title": "Transverso", "section": "Situación y orientación", "label": "Eje", "definition": "Cruza de lado a lado una estructura.", "icon": "orientation", "detail": "Describe trayectos o disposiciones perpendiculares al eje largo."}, {"title": "Superficial", "section": "Situación y orientación", "label": "Profundidad", "definition": "Está cerca de la superficie corporal.", "icon": "orientation", "detail": "Se opone a profundo."}, {"title": "Profundo", "section": "Situación y orientación", "label": "Profundidad", "definition": "Está más alejado de la superficie.", "icon": "orientation", "detail": "Se opone a superficial."}, {"title": "Proximal", "section": "Relativos a los miembros", "label": "Miembros", "definition": "Está más cerca del tronco o del punto de origen del miembro.", "icon": "limb", "detail": "Se usa mucho en huesos, músculos y articulaciones."}, {"title": "Distal", "section": "Relativos a los miembros", "label": "Miembros", "definition": "Está más lejos del tronco o del punto de origen.", "icon": "limb", "detail": "Se opone a proximal."}, {"title": "Medial", "section": "Relativos a los miembros", "label": "Miembros", "definition": "Queda hacia la cara interna del miembro.", "icon": "limb", "detail": "Sirve para ubicar estructuras mirando el miembro en relación con el cuerpo."}, {"title": "Lateral", "section": "Relativos a los miembros", "label": "Miembros", "definition": "Queda hacia la cara externa del miembro.", "icon": "limb", "detail": "Se opone a medial."}, {"title": "Axial", "section": "Relativos a los miembros", "label": "Dedos", "definition": "Está más cerca del eje del dedo o del miembro.", "icon": "limb", "detail": "Muy útil en anatomía digital."}, {"title": "Abaxial", "section": "Relativos a los miembros", "label": "Dedos", "definition": "Está más lejos del eje del dedo o del miembro.", "icon": "limb", "detail": "Se opone a axial."}, {"title": "Dorsal", "section": "Relativos a los miembros", "label": "Miembros", "definition": "En la porción distal del miembro señala la cara anterior o superior visible.", "icon": "limb", "detail": "En carpo/tarso hacia abajo cambia respecto a palmar y plantar."}, {"title": "Palmar", "section": "Relativos a los miembros", "label": "Miembro torácico", "definition": "Indica la cara caudal de la mano o autopodio torácico.", "icon": "limb", "detail": "Se usa distal al carpo."}, {"title": "Solar", "section": "Relativos a los miembros", "label": "Pie", "definition": "Se refiere a la superficie que mira al suelo en el casco o la pezuña.", "icon": "limb", "detail": "Muy usado en ungulados."}, {"title": "Plantar", "section": "Relativos a los miembros", "label": "Miembro pelviano", "definition": "Indica la cara caudal del pie en el miembro pelviano.", "icon": "limb", "detail": "Se usa distal al tarso."}, {"title": "Abductor", "section": "Términos generales", "label": "General", "definition": "Músculo o acción que separa una parte del eje medio.", "icon": "general", "detail": "Se opone a aductor."}, {"title": "Aductor", "section": "Términos generales", "label": "General", "definition": "Músculo o acción que acerca una parte al eje medio.", "icon": "general", "detail": "Se opone a abductor."}, {"title": "Aferente", "section": "Términos generales", "label": "General", "definition": "Conduce información hacia un centro de integración.", "icon": "general", "detail": "Muy usado en vías nerviosas o vasos que llegan."}, {"title": "Eferente", "section": "Términos generales", "label": "General", "definition": "Conduce información desde un centro hacia la periferia.", "icon": "general", "detail": "Se opone a aferente."}, {"title": "Apical", "section": "Términos generales", "label": "General", "definition": "Relacionado con el ápice o extremo de una estructura.", "icon": "general", "detail": "Ejemplo: región apical del pulmón."}, {"title": "Basal", "section": "Términos generales", "label": "General", "definition": "Relacionado con la base de una estructura.", "icon": "general", "detail": "Se opone a apical."}, {"title": "Central", "section": "Términos generales", "label": "General", "definition": "Ubicado cerca del centro.", "icon": "general", "detail": "Se contrasta con periférico."}, {"title": "Colateral", "section": "Términos generales", "label": "General", "definition": "Situado al lado de otra estructura principal.", "icon": "general", "detail": "Ejemplo: ligamento colateral."}, {"title": "Ascendente", "section": "Términos generales", "label": "General", "definition": "Que se dirige hacia arriba o hacia una posición más craneal/proximal.", "icon": "general", "detail": "Describe trayectos o direcciones."}, {"title": "Descendente", "section": "Términos generales", "label": "General", "definition": "Que se dirige hacia abajo o hacia una posición más caudal/distal.", "icon": "general", "detail": "Describe trayectos o direcciones."}, {"title": "Común", "section": "Términos generales", "label": "General", "definition": "Compartido por varias estructuras o trayectos.", "icon": "general", "detail": "Ejemplo: tronco común."}, {"title": "Constrictor", "section": "Términos generales", "label": "General", "definition": "Músculo o estructura que estrecha una abertura.", "icon": "general", "detail": "Se opone a dilatador."}, {"title": "Dilatador", "section": "Términos generales", "label": "General", "definition": "Músculo o estructura que amplía una abertura.", "icon": "general", "detail": "Se opone a constrictor."}, {"title": "Erector", "section": "Términos generales", "label": "General", "definition": "Músculo o acción que eleva o endereza una parte.", "icon": "general", "detail": "Ejemplo: músculos erectores."}, {"title": "Extensor", "section": "Términos generales", "label": "General", "definition": "Músculo o acción que aumenta el ángulo de una articulación.", "icon": "general", "detail": "Se opone a flexor."}, {"title": "Flexor", "section": "Términos generales", "label": "General", "definition": "Músculo o acción que disminuye el ángulo de una articulación.", "icon": "general", "detail": "Se opone a extensor."}, {"title": "Accesorio", "section": "Términos generales", "label": "General", "definition": "Elemento secundario que acompaña o ayuda a otro principal.", "icon": "general", "detail": "Ejemplo: hueso o ligamento accesorio."}, {"title": "Adventicio", "section": "Términos generales", "label": "General", "definition": "Elemento añadido o no constante en todas las especies o individuos.", "icon": "general", "detail": "Se usa para describir estructuras complementarias."}]}, {"title": "Partes del cuerpo", "subtitle": "Partes mayores y regiones topográficas", "items": [{"title": "Todo el cuerpo", "section": "Partes del cuerpo", "label": "Parte", "definition": "Conjunto completo del organismo animal.", "icon": "body", "detail": "Sirve como referencia global antes de subdividir en regiones."}, {"title": "Cabeza", "section": "Partes del cuerpo", "label": "Parte", "definition": "Porción anterior que contiene cerebro y órganos sensoriales.", "icon": "body", "detail": "Incluye ojos, oídos, nariz y boca."}, {"title": "Cráneo", "section": "Partes del cuerpo", "label": "Parte", "definition": "Estructura ósea de la cabeza.", "icon": "body", "detail": "Protege el encéfalo y soporta órganos sensoriales."}, {"title": "Cuello", "section": "Partes del cuerpo", "label": "Parte", "definition": "Segmento que une cabeza y tronco.", "icon": "body", "detail": "Permite movilidad y paso de vasos, nervios y vías aéreas."}, {"title": "Tronco", "section": "Partes del cuerpo", "label": "Parte", "definition": "Parte central del cuerpo.", "icon": "body", "detail": "Aloja vísceras y soporta las principales inserciones musculares."}, {"title": "Cola", "section": "Partes del cuerpo", "label": "Parte", "definition": "Apéndice terminal del cuerpo.", "icon": "body", "detail": "Participa en equilibrio, comunicación y protección."}, {"title": "Miembro torácico", "section": "Partes del cuerpo", "label": "Parte", "definition": "Extremidad anterior.", "icon": "body", "detail": "Contribuye a soporte, desplazamiento y maniobra."}, {"title": "Miembro pelviano", "section": "Partes del cuerpo", "label": "Parte", "definition": "Extremidad posterior.", "icon": "body", "detail": "Aporta propulsión y estabilidad."}, {"title": "Regiones de la cabeza", "section": "Regiones del cuerpo", "label": "Región", "definition": "Subdivisiones topográficas de la cabeza.", "icon": "region", "detail": "Permiten localizar ojos, nariz, boca y áreas craneofaciales."}, {"title": "Regiones del cuello", "section": "Regiones del cuerpo", "label": "Región", "definition": "Subdivisiones anatómicas del cuello.", "icon": "region", "detail": "Ayudan a ubicar tráquea, esófago, vasos y músculos cervicales."}, {"title": "Regiones del tórax", "section": "Regiones del cuerpo", "label": "Región", "definition": "Áreas de la caja torácica.", "icon": "region", "detail": "Útiles para auscultación, imagen y exploración de pulmón y corazón."}, {"title": "Regiones del abdomen", "section": "Regiones del cuerpo", "label": "Región", "definition": "Áreas topográficas abdominales.", "icon": "region", "detail": "Sirven para describir dolor, masas y vísceras digestivas."}, {"title": "Regiones de la espalda", "section": "Regiones del cuerpo", "label": "Región", "definition": "Zonas dorsales del tronco.", "icon": "region", "detail": "Se usan para ubicar columna, musculatura y relieve óseo."}, {"title": "Regiones pélvicas", "section": "Regiones del cuerpo", "label": "Región", "definition": "Áreas alrededor de la pelvis y periné.", "icon": "region", "detail": "Importantes en locomoción y examen reproductivo."}, {"title": "Regiones del miembro torácico", "section": "Regiones del cuerpo", "label": "Región", "definition": "Subdivisiones del miembro anterior.", "icon": "region", "detail": "Ayudan a describir lesiones desde hombro hasta dedos."}, {"title": "Regiones del miembro pelviano", "section": "Regiones del cuerpo", "label": "Región", "definition": "Subdivisiones del miembro posterior.", "icon": "region", "detail": "Ayudan a ubicar hallazgos desde cadera hasta dedos."}]}, {"title": "Ramas de la anatomía", "subtitle": "Grandes áreas de estudio anatómico", "items": [{"title": "Osteología", "section": "Ramas", "label": "Rama", "definition": "Estudia el esqueleto y los huesos que lo componen.", "icon": "bone", "detail": "Analiza forma, función, topografía y desarrollo de los huesos."}, {"title": "Artrología", "section": "Ramas", "label": "Rama", "definition": "Estudia la unión de los huesos y las articulaciones.", "icon": "joint", "detail": "Incluye superficies articulares, ligamentos y movimiento."}, {"title": "Miología", "section": "Ramas", "label": "Rama", "definition": "Estudia la estructura, función y variaciones de los músculos.", "icon": "muscle", "detail": "Explica movimiento, biomecánica e inserciones musculares."}, {"title": "Esplancnología", "section": "Ramas", "label": "Rama", "definition": "Estudia las vísceras y los órganos internos.", "icon": "organs", "detail": "Incluye digestivo, respiratorio, genitourinario, peritoneo y endocrino."}, {"title": "Angiología", "section": "Ramas", "label": "Rama", "definition": "Estudia corazón, arterias, venas y sistema linfático.", "icon": "heart", "detail": "Explica la circulación y el drenaje de líquidos corporales."}]}, {"title": "Sistemas", "subtitle": "Sistema nervioso veterinario", "items": [{"title": "Sistema nervioso", "section": "Sistema nervioso", "label": "Sistema", "definition": "Red de control y comunicación del cuerpo.", "icon": "nervous", "detail": "Coordina sensibilidad, movimiento, conducta y funciones automáticas."}, {"title": "Sistema nervioso central", "section": "Sistema nervioso", "label": "Sistema", "definition": "Lo forman encéfalo y médula espinal.", "icon": "nervous", "detail": "Integra información y genera respuestas."}, {"title": "Sistema nervioso periférico", "section": "Sistema nervioso", "label": "Sistema", "definition": "Incluye nervios y ganglios fuera del SNC.", "icon": "nervous", "detail": "Conecta receptores y órganos efectores con el centro."}, {"title": "Sistema nervioso autónomo", "section": "Sistema nervioso", "label": "Sistema", "definition": "Regula funciones involuntarias.", "icon": "nervous", "detail": "Controla vísceras, glándulas, frecuencia cardiaca y tono vascular."}, {"title": "Encéfalo", "section": "Sistema nervioso", "label": "Componente", "definition": "Es la porción del sistema nervioso central alojada en el cráneo. Integra la información sensorial, coordina respuestas motoras y participa en memoria, conducta y regulación autónoma.", "icon": "nervous", "detail": "Piensa en él como el centro de procesamiento principal: recibe, interpreta y ordena respuestas."}, {"title": "Médula espinal", "section": "Sistema nervioso", "label": "Componente", "definition": "Es el cordón nervioso protegido por las vértebras. Conduce información entre encéfalo y cuerpo y también genera reflejos.", "icon": "nervous", "detail": "Sirve de vía de paso y de centro reflejo, por eso una lesión medular puede alterar movimiento y sensibilidad."}, {"title": "Nervios", "section": "Sistema nervioso", "label": "Componente", "definition": "Son haces de fibras nerviosas que comunican el sistema nervioso central con músculos, glándulas y receptores sensoriales.", "icon": "nervous", "detail": "Funcionan como cables biológicos que llevan y traen señales."}, {"title": "Ganglios", "section": "Sistema nervioso", "label": "Componente", "definition": "Son agrupaciones de cuerpos neuronales situadas fuera del encéfalo y de la médula. Participan en relevo e integración de impulsos.", "icon": "nervous", "detail": "Se localizan sobre trayectos nerviosos y ayudan a organizar la señal."}]}, {"title": "Órganos de los sentidos", "subtitle": "Percepción del entorno y señales químicas", "items": [{"title": "Órgano de la visión", "section": "Sentidos", "label": "Sentido", "definition": "Capta la luz y forma imágenes.", "icon": "senses", "detail": "Incluye globo ocular, anexos y vías visuales iniciales."}, {"title": "Órgano del gusto", "section": "Sentidos", "label": "Sentido", "definition": "Reconoce sabores mediante receptores gustativos.", "icon": "senses", "detail": "Participa en selección del alimento y respuesta alimentaria."}, {"title": "Órgano vestibulococlear", "section": "Sentidos", "label": "Sentido", "definition": "Percibe audición y equilibrio.", "icon": "senses", "detail": "Integra oído interno, conducción del sonido y orientación espacial."}, {"title": "Órgano olfactorio", "section": "Sentidos", "label": "Sentido", "definition": "Detecta olores en la cavidad nasal.", "icon": "senses", "detail": "Es clave en conducta, búsqueda y reconocimiento."}, {"title": "Órgano vomeronasal", "section": "Sentidos", "label": "Sentido", "definition": "Órgano quimiosensorial accesorio.", "icon": "senses", "detail": "Relaciona señales químicas y feromonas con conducta social y reproductiva."}]}, {"title": "Integumento común", "subtitle": "Cobertura externa y anexos cutáneos", "items": [{"title": "Piel", "section": "Integumento", "label": "Integumento", "definition": "Cobertura externa del cuerpo.", "icon": "skin", "detail": "Protege, regula temperatura y actúa como barrera sensorial."}, {"title": "Pelos", "section": "Integumento", "label": "Anexo cutáneo", "definition": "Estructuras filamentosas queratinizadas.", "icon": "skin", "detail": "Aíslan, protegen y ayudan a la sensibilidad táctil."}, {"title": "Cuerno", "section": "Integumento", "label": "Anexo cutáneo", "definition": "Estructura dura queratinizada de soporte y defensa.", "icon": "skin", "detail": "Es característica de ciertas especies."}, {"title": "Almohadillas", "section": "Integumento", "label": "Anexo cutáneo", "definition": "Superficies engrosadas de apoyo.", "icon": "skin", "detail": "Amortiguan, protegen y mejoran tracción."}, {"title": "Unguícula / Úngula", "section": "Integumento", "label": "Anexo cutáneo", "definition": "Incluye uñas, garras o pezuñas según la especie.", "icon": "skin", "detail": "Protege el extremo digital y ayuda al apoyo o la prensión."}, {"title": "Glándulas cutáneas", "section": "Integumento", "label": "Anexo cutáneo", "definition": "Glándulas asociadas a la piel.", "icon": "skin", "detail": "Producen secreciones con función protectora, lubricante o de señal química."}, {"title": "Mama", "section": "Integumento", "label": "Anexo cutáneo", "definition": "Glándula mamaria especializada.", "icon": "skin", "detail": "Produce y excreta leche."}]}];
+
+function esc(text){
+  return String(text).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+}
+function escSvg(text){
+  return String(text).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+}
+function speech(text){
+  if(!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'es-CO';
+  u.rate = .93;
+  window.speechSynthesis.speak(u);
+}
+const C = {
+  ink:'#5d5974', line:'#e9e1f1', rose:'#ffc1dd', pink:'#ffd6ea',
+  lav:'#e4dcff', mint:'#d9f7ee', peach:'#ffe7d6', sky:'#dff2ff',
+  yellow:'#fff5c8', soft:'#faf7ff'
+};
+
+function svgLabel(x,y,text,color='#6d6586',size=13){
+  return `<text x="${x}" y="${y}" font-family="Nunito, sans-serif" font-size="${size}" font-weight="800" fill="${color}">${escSvg(text)}</text>`;
+}
+function svgTopBadge(){
+  return ``;
+}
+
+function animalSideBase(){
+  return `
+  <path d="M66 154c0-34 31-58 73-58h45c19 0 36 5 51 14l23-10 11 16-15 8c4 8 6 16 6 25v8h-34v-10c0-5-4-9-9-9H113c-5 0-9 4-9 9v10H66z"
+        fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+  <circle cx="225" cy="84" r="24" fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+  <path d="M241 67l16-12 7 14-13 7M207 67l-9-15 13-7 8 14" fill="#fff" stroke="${C.line}" stroke-width="4.5" stroke-linejoin="round"/>
+  <path d="M90 157v30M130 157v30M188 157v30M225 157v30" stroke="${C.ink}" stroke-width="7" stroke-linecap="round"/>
+  <path d="M65 122L44 108" stroke="${C.ink}" stroke-width="6" stroke-linecap="round"/>
+  `;
+}
+function frontBodyBase(){
+  return `
+  <circle cx="160" cy="70" r="34" fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+  <rect x="112" y="102" width="96" height="66" rx="28" fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+  <path d="M126 168v30M148 168v32M172 168v32M194 168v30" stroke="${C.ink}" stroke-width="7" stroke-linecap="round"/>
+  `;
+}
+function pawBase(){
+  return `
+  <ellipse cx="160" cy="142" rx="48" ry="35" fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+  <circle cx="124" cy="96" r="18" fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+  <circle cx="150" cy="78" r="18" fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+  <circle cx="176" cy="78" r="18" fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+  <circle cx="202" cy="96" r="18" fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+  `;
+}
+
+function orientationArt(title){
+  const t = title.toLowerCase();
+  let overlay = svgTopBadge(title, '#fffdfd', '#efe6f6', '#7b6d94');
+  if(['craneal','caudal','anterior','posterior','rostral'].includes(t)){
+    const forward = ['craneal','anterior','rostral'].includes(t);
+    overlay += `
+      ${animalSideBase()}
+      <path d="${forward ? '122 82H252' : '228 82H98'}" stroke="${C.rose}" stroke-width="10" stroke-linecap="round"/>
+      <path d="${forward ? '252 82l-18-11v22z' : '98 82l18-11v22z'}" fill="${C.rose}"/>
+      <circle cx="${forward ? 228 : 124}" cy="82" r="7" fill="${C.rose}"/>
+    `;
+  } else if(['dorsal','ventral','superior','inferior'].includes(t)){
+    const up = ['dorsal','superior'].includes(t);
+    overlay += `
+      ${animalSideBase()}
+      <path d="M160 ${up ? 154 : 48}V${up ? 60 : 146}" stroke="${C.sky}" stroke-width="10" stroke-linecap="round"/>
+      <path d="M160 ${up ? 60 : 146}l-12 ${up ? 18 : -18}h24z" fill="${C.sky}"/>
+      <rect x="188" y="${up ? 72 : 116}" width="74" height="24" rx="12" fill="#fff" stroke="${C.line}" stroke-width="2"/>
+      ${svgLabel(202, up ? 88 : 132, up ? 'hacia dorso' : 'hacia vientre', '#6b8aa4', 11.5)}
+    `;
+  } else if(['medial','lateral','intermedio'].includes(t)){
+    overlay += `
+      ${frontBodyBase()}
+      <path d="M160 48v136" stroke="${C.rose}" stroke-dasharray="7 7" stroke-width="4"/>
+      <path d="${t==='medial' ? '114 124h88' : t==='lateral' ? '160 124h78' : '126 124h34'}" stroke="${C.sky}" stroke-width="10" stroke-linecap="round"/>
+      <path d="${t==='medial' ? '202 124l-18-11v22z' : t==='lateral' ? '238 124l-18-11v22z' : '160 124l-18-11v22z'}" fill="${C.sky}"/>
+    `;
+  } else if(['derecha','izquierda'].includes(t)){
+    overlay += `
+      ${frontBodyBase()}
+      <rect x="${t==='derecha' ? 160 : 112}" y="102" width="48" height="66" rx="28" fill="${C.mint}" opacity=".95"/>
+      <path d="M160 44v144" stroke="${C.line}" stroke-width="3" stroke-dasharray="6 6"/>
+    `;
+  } else if(['sagital','transversal','longitudinal','transverso'].includes(t)){
+    const line = t==='transversal' || t==='transverso'
+      ? '<path d="M84 122H236" stroke="'+C.sky+'" stroke-width="10" stroke-linecap="round"/>'
+      : '<path d="M160 44V188" stroke="'+C.rose+'" stroke-width="10" stroke-linecap="round"/>';
+    overlay += `
+      ${animalSideBase()}
+      ${line}
+    `;
+  } else if(['superficial','profundo','interno','externo'].includes(t)){
+    overlay += `
+      <circle cx="160" cy="112" r="64" fill="#fff" stroke="${C.line}" stroke-width="5"/>
+      <circle cx="160" cy="112" r="40" fill="${C.soft}" stroke="${C.line}" stroke-width="4"/>
+      <circle cx="160" cy="112" r="18" fill="${C.lav}" stroke="${C.line}" stroke-width="3.5"/>
+      <path d="${['superficial','externo'].includes(t) ? '160 112L222 76' : '160 112L176 112'}" stroke="${C.rose}" stroke-width="9" stroke-linecap="round"/>
+      <circle cx="${['superficial','externo'].includes(t) ? 222 : 176}" cy="${['superficial','externo'].includes(t) ? 76 : 112}" r="7" fill="${C.rose}"/>
+    `;
+  } else {
+    overlay += `
+      ${animalSideBase()}
+      <path d="M98 122H228" stroke="${C.mint}" stroke-width="10" stroke-linecap="round"/>
+      <path d="M228 122l-18-12v24z" fill="${C.mint}"/>
+    `;
+  }
+  return `<svg viewBox="0 0 320 220" aria-hidden="true">${overlay}</svg>`;
+}
+
+function limbArt(title){
+  const t = title.toLowerCase();
+  let overlay = svgTopBadge(title, '#fffdfd', '#efe6f6', '#7b6d94') + `
+    <path d="M144 42h32v54c0 18 7 28 20 42 14 15 19 26 19 43v15h-31v-14c0-12-5-19-16-31-13-14-23-30-23-55z"
+          fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+    <path d="M154 44h12" stroke="${C.ink}" stroke-width="8" stroke-linecap="round"/>
+    <path d="M138 187h82" stroke="${C.line}" stroke-width="6" stroke-linecap="round"/>
+  `;
+  if(['proximal','distal'].includes(t)){
+    overlay += `
+      <path d="M112 ${t==='proximal' ? 74 : 168}H226" stroke="${C.rose}" stroke-width="10" stroke-linecap="round"/>
+      <path d="M${t==='proximal' ? 112 : 226} ${t==='proximal' ? 74 : 168}l20-12v24z" fill="${C.rose}" transform="scale(${t==='proximal' ? -1 : 1},1) translate(${t==='proximal' ? -224 : 0},0)"/>
+    `;
+  } else if(['palmar','plantar','solar','dorsal'].includes(t)){
+    overlay = svgTopBadge(title, '#fffdfd', '#efe6f6', '#7b6d94') + pawBase();
+    overlay += `
+      <path d="${t==='dorsal' ? '104 108h112' : t==='palmar' || t==='plantar' ? '104 158h112' : '116 172h88'}" stroke="${t==='solar' ? C.yellow : C.sky}" stroke-width="12" stroke-linecap="round"/>
+    `;
+  } else if(['axial','abaxial'].includes(t)){
+    overlay = svgTopBadge(title, '#fffdfd', '#efe6f6', '#7b6d94') + `
+      <rect x="120" y="64" width="32" height="110" rx="18" fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+      <rect x="168" y="64" width="32" height="110" rx="18" fill="#fff" stroke="${C.line}" stroke-width="4.5"/>
+      <path d="M160 46v136" stroke="${C.rose}" stroke-dasharray="6 6" stroke-width="4"/>
+      <path d="${t==='axial' ? '110 120h80' : '160 120h72'}" stroke="${C.sky}" stroke-width="10" stroke-linecap="round"/>
+      <path d="${t==='axial' ? '190 120l-18-12v24z' : '232 120l-18-12v24z'}" fill="${C.sky}"/>
+    `;
+  } else if(['medial','lateral'].includes(t)){
+    overlay += `
+      <path d="${t==='medial' ? '120 118h62' : '160 118h70'}" stroke="${C.sky}" stroke-width="10" stroke-linecap="round"/>
+      <path d="${t==='medial' ? '182 118l-18-12v24z' : '230 118l-18-12v24z'}" fill="${C.sky}"/>
+    `;
+  } else {
+    overlay += `<path d="M98 122H228" stroke="${C.mint}" stroke-width="10" stroke-linecap="round"/><path d="M228 122l-18-12v24z" fill="${C.mint}"/>`;
+  }
+  return `<svg viewBox="0 0 320 220" aria-hidden="true">${overlay}</svg>`;
+}
+
+function generalArt(title){
+  const t = title.toLowerCase();
+  let overlay = '';
+  if(['abductor','aductor'].includes(t)){
+    overlay = `
+      <circle cx="160" cy="112" r="16" fill="${C.lav}"/>
+      <path d="M160 112l-42-28M160 112l42-28" stroke="${C.ink}" stroke-width="7" stroke-linecap="round"/>
+      <path d="${t==='abductor' ? '118 84l-18-8 8 18 M202 84l18-8 -8 18' : '118 84l18 8 -8-18 M202 84l-18 8 8-18'}" fill="none" stroke="${C.rose}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    `;
+  } else if(['flexor','extensor'].includes(t)){
+    overlay = `
+      <path d="M118 152V92a26 26 0 0 1 26-26h8" stroke="${C.ink}" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <path d="M204 152H144a26 26 0 0 1-26-26v-8" stroke="${C.ink}" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <path d="${t==='flexor' ? '150 66a62 62 0 0 1 54 54' : '208 120a62 62 0 0 1-54 54'}" stroke="${C.rose}" stroke-width="9" fill="none" stroke-linecap="round"/>
+    `;
+  } else if(['aferente','eferente'].includes(t)){
+    overlay = `
+      <circle cx="104" cy="112" r="18" fill="${C.yellow}" stroke="${C.line}" stroke-width="4"/>
+      <circle cx="228" cy="112" r="20" fill="${C.lav}" stroke="${C.line}" stroke-width="4"/>
+      <path d="${t==='aferente' ? '126 112H200' : '200 112H126'}" stroke="${C.sky}" stroke-width="10" stroke-linecap="round"/>
+      <path d="${t==='aferente' ? '200 112l-18-12v24z' : '126 112l18-12v24z'}" fill="${C.sky}"/>
+    `;
+  } else if(['constrictor','dilatador'].includes(t)){
+    overlay = `
+      <circle cx="160" cy="112" r="58" fill="#fff" stroke="${C.line}" stroke-width="5"/>
+      <circle cx="160" cy="112" r="${t==='constrictor' ? 18 : 34}" fill="${C.peach}" stroke="${C.line}" stroke-width="4"/>
+      <path d="M96 112h36M188 112h36M160 48v36M160 140v36" stroke="${C.rose}" stroke-width="8" stroke-linecap="round" opacity="${t==='dilatador' ? .55 : 1}"/>
+    `;
+  } else if(['ascendente','descendente'].includes(t)){
+    overlay = `
+      <path d="M160 170V54" stroke="${C.sky}" stroke-width="12" stroke-linecap="round"/>
+      <path d="M160 ${t==='ascendente' ? 54 : 170}l-14 ${t==='ascendente' ? 18 : -18}h28z" fill="${C.sky}"/>
+    `;
+  } else if(['apical','basal'].includes(t)){
+    overlay = `
+      <path d="M160 54l58 112H102z" fill="#fff" stroke="${C.line}" stroke-width="5"/>
+      <path d="${t==='apical' ? '160 54l0 0' : '110 152H210'}" stroke="${C.rose}" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="${t==='apical' ? 160 : 110}" cy="${t==='apical' ? 54 : 152}" r="7" fill="${C.rose}"/>
+      ${t==='basal' ? '<circle cx="210" cy="152" r="7" fill="'+C.rose+'"/>' : ''}
+    `;
+  } else {
+    overlay = `
+      <rect x="84" y="64" width="152" height="92" rx="28" fill="#fff" stroke="${C.line}" stroke-width="5"/>
+      <path d="M112 92h96M112 118h68M112 144h84" stroke="${C.ink}" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+      <circle cx="228" cy="74" r="16" fill="${C.mint}"/>
+    `;
+  }
+  return `<svg viewBox="0 0 320 220" aria-hidden="true">${overlay}${svgLabel(108, 202, title.toUpperCase(), '#6d6586', 14)}</svg>`;
+}
+
+function bodyArt(title){
+  const t = title.toLowerCase();
+  let h = '';
+  let call = '';
+  if(t.includes('cabeza') || t.includes('cráneo')){ h = '<circle cx="226" cy="84" r="24" fill="'+C.mint+'" opacity=".95"/>'; call = '<path d="M226 84l-22-28" stroke="'+C.mint+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('cuello')){ h = '<rect x="198" y="88" width="32" height="22" rx="10" fill="'+C.mint+'" opacity=".95"/>'; call = '<path d="M214 88l18-30" stroke="'+C.mint+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('tronco')){ h = '<rect x="105" y="96" width="112" height="44" rx="20" fill="'+C.mint+'" opacity=".95"/>'; call = '<path d="M160 96V58" stroke="'+C.mint+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('cola')){ h = '<path d="M65 122L44 108" stroke="'+C.mint+'" stroke-width="12" stroke-linecap="round"/>'; call = '<path d="M44 108l-8-28" stroke="'+C.mint+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('torácico')){ h = '<path d="M126 154v34M148 154v34" stroke="'+C.mint+'" stroke-width="12" stroke-linecap="round"/>'; call = '<path d="M138 154l-18-30" stroke="'+C.mint+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('pelviano')){ h = '<path d="M188 154v34M225 154v34" stroke="'+C.mint+'" stroke-width="12" stroke-linecap="round"/>'; call = '<path d="M206 154l18-30" stroke="'+C.mint+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else { h = '<path d="M66 154h194" stroke="'+C.mint+'" stroke-width="12" stroke-linecap="round"/>'; }
+  return `<svg viewBox="0 0 320 220" aria-hidden="true">${svgTopBadge(title, '#fffefd', '#efe6f6', '#5f8f84')}${animalSideBase()}${h}${call}</svg>`;
+}
+
+function regionArt(title){
+  const t = title.toLowerCase();
+  let h = '';
+  let call = '';
+  if(t.includes('cabeza')){ h = '<circle cx="226" cy="84" r="26" fill="'+C.sky+'" opacity=".95"/>'; call = '<path d="M226 84l-22-28" stroke="'+C.sky+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('cuello')){ h = '<rect x="196" y="88" width="36" height="24" rx="10" fill="'+C.sky+'" opacity=".95"/>'; call = '<path d="M214 88l18-30" stroke="'+C.sky+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('tórax')){ h = '<rect x="145" y="96" width="55" height="40" rx="18" fill="'+C.sky+'" opacity=".95"/>'; call = '<path d="M172 96V58" stroke="'+C.sky+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('abdomen')){ h = '<rect x="94" y="96" width="55" height="40" rx="18" fill="'+C.peach+'" opacity=".95"/>'; call = '<path d="M122 96V58" stroke="'+C.peach+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('espalda')){ h = '<rect x="96" y="88" width="120" height="14" rx="7" fill="'+C.rose+'" opacity=".95"/>'; call = '<path d="M170 88V56" stroke="'+C.rose+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('pélv')){ h = '<rect x="84" y="102" width="34" height="34" rx="12" fill="'+C.lav+'" opacity=".95"/>'; call = '<path d="M100 102V64" stroke="'+C.lav+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('torácico')){ h = '<path d="M126 154v34M148 154v34" stroke="'+C.sky+'" stroke-width="12" stroke-linecap="round"/>'; call = '<path d="M138 154l-18-30" stroke="'+C.sky+'" stroke-width="6" stroke-linecap="round"/>'; }
+  else if(t.includes('pelviano')){ h = '<path d="M188 154v34M225 154v34" stroke="'+C.sky+'" stroke-width="12" stroke-linecap="round"/>'; call = '<path d="M206 154l18-30" stroke="'+C.sky+'" stroke-width="6" stroke-linecap="round"/>'; }
+  return `<svg viewBox="0 0 320 220" aria-hidden="true">${svgTopBadge(title, '#fffefd', '#efe6f6', '#6b8aa4')}${animalSideBase()}${h}${call}</svg>`;
+}
+
+function branchArt(title){
+  const t = title.toLowerCase();
+  if(t.includes('osteo')) return `<svg viewBox="0 0 320 220" aria-hidden="true"><path d="M102 78c-14-11-14-30 4-39 14-7 31-2 39 10h30c8-12 25-17 39-10 18 9 18 28 4 39 14 11 14 30-4 39-14 7-31 2-39-10h-30c-8 12-25 17-39 10-18-9-18-28-4-39z" fill="#fff" stroke="${C.line}" stroke-width="6"/><circle cx="238" cy="62" r="16" fill="${C.yellow}"/><text x="106" y="198" font-family="Nunito" font-size="14" font-weight="800" fill="#7c6d4e">Huesos</text></svg>`;
+  if(t.includes('artro')) return `<svg viewBox="0 0 320 220" aria-hidden="true"><path d="M102 62h32v40h52V62h32v96h-32v-28h-52v28h-32z" fill="#fff" stroke="${C.line}" stroke-width="6"/><circle cx="160" cy="116" r="20" fill="${C.rose}"/><text x="104" y="198" font-family="Nunito" font-size="14" font-weight="800" fill="#9b6e86">Articulación</text></svg>`;
+  if(t.includes('miolog')) return `<svg viewBox="0 0 320 220" aria-hidden="true"><path d="M94 130c0-36 30-60 72-60 25 0 46 10 64 29l16 16c-10 31-37 49-76 49-49 0-76-13-76-34z" fill="${C.rose}" stroke="${C.line}" stroke-width="6"/><path d="M118 124c20-12 48-12 76 0M126 144c16-7 35-7 55 0" stroke="#fff" stroke-width="7" stroke-linecap="round"/><text x="116" y="198" font-family="Nunito" font-size="14" font-weight="800" fill="#9b6e86">Músculos</text></svg>`;
+  if(t.includes('esplanc')) return `<svg viewBox="0 0 320 220" aria-hidden="true"><path d="M132 60c-24 10-42 31-42 56 0 29 20 52 47 52 13 0 28-6 39-18 11 12 26 18 39 18 27 0 47-23 47-52 0-25-18-46-42-56" fill="${C.peach}" stroke="${C.line}" stroke-width="6"/><circle cx="138" cy="90" r="20" fill="${C.mint}"/><circle cx="214" cy="90" r="20" fill="${C.sky}"/><text x="102" y="198" font-family="Nunito" font-size="14" font-weight="800" fill="#8f7358">Vísceras</text></svg>`;
+  return `<svg viewBox="0 0 320 220" aria-hidden="true"><path d="M160 176C98 139 78 113 78 84a31 31 0 0 1 55-21l27 27 27-27a31 31 0 0 1 55 21c0 29-20 55-82 92z" fill="${C.rose}" stroke="${C.line}" stroke-width="6"/><path d="M98 118h30l14-22 19 40 14-28h47" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="88" y="198" font-family="Nunito" font-size="14" font-weight="800" fill="#9b6e86">Corazón · vasos · linfa</text></svg>`;
+}
+
+function nervousArt(title){
+  const t = title.toLowerCase();
+  let extra = svgTopBadge(title, '#fffefd', '#efe6f6', '#6d6586');
+  if(t==='sistema nervioso'){
+    extra += `
+      ${animalSideBase()}
+      <circle cx="226" cy="84" r="15" fill="${C.lav}" stroke="${C.line}" stroke-width="3.5"/>
+      <path d="M214 84h24" stroke="${C.ink}" stroke-width="2.5" opacity=".55"/>
+      <path d="M160 92v72" stroke="${C.sky}" stroke-width="8" stroke-linecap="round"/>
+      <path d="M160 110H128M160 110h34M160 128H116M160 128h46M160 146H132M160 146h30" stroke="${C.mint}" stroke-width="6" stroke-linecap="round"/>
+    `;
+  } else if(t.includes('central')){
+    extra += `
+      <path d="M132 84c0-20 12-34 28-34 10 0 18 5 22 13 4-8 12-13 22-13 16 0 28 14 28 34 0 20-12 32-28 32h-44c-16 0-28-12-28-32z" fill="${C.lav}" stroke="${C.line}" stroke-width="4.5"/>
+      <path d="M160 118v58" stroke="${C.sky}" stroke-width="14" stroke-linecap="round"/>
+      <path d="M160 146h-28M160 146h28" stroke="${C.mint}" stroke-width="7" stroke-linecap="round"/>
+    `;
+  } else if(t.includes('periférico')){
+    extra += `
+      ${animalSideBase()}
+      <path d="M160 98v54" stroke="${C.line}" stroke-width="7" stroke-linecap="round"/>
+      <path d="M160 108H122M160 108h42M160 126H110M160 126h56M160 144H126M160 144h40" stroke="${C.sky}" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="122" cy="108" r="5" fill="${C.yellow}"/><circle cx="202" cy="108" r="5" fill="${C.yellow}"/><circle cx="110" cy="126" r="5" fill="${C.yellow}"/><circle cx="216" cy="126" r="5" fill="${C.yellow}"/><circle cx="126" cy="144" r="5" fill="${C.yellow}"/><circle cx="200" cy="144" r="5" fill="${C.yellow}"/>
+    `;
+  } else if(t.includes('autónomo')){
+    extra += `
+      <path d="M160 54c28 0 48 18 48 42 0 16-10 26-22 26h-52c-12 0-22-10-22-26 0-24 20-42 48-42z" fill="${C.lav}" stroke="${C.line}" stroke-width="5"/>
+      <path d="M160 122v24" stroke="${C.ink}" stroke-width="8" stroke-linecap="round"/>
+      <path d="M160 146L120 168M160 146L160 176M160 146L200 168" stroke="${C.sky}" stroke-width="6" stroke-linecap="round"/>
+      <path d="M114 170c0-12 10-22 22-22 14 0 24 12 24 30-10 4-17 6-24 6-12 0-22-6-22-14z" fill="${C.rose}" stroke="${C.line}" stroke-width="4"/>
+      <path d="M160 162c0-14 10-24 24-24 14 0 24 10 24 24s-10 24-24 24-24-10-24-24z" fill="${C.peach}" stroke="${C.line}" stroke-width="4"/>
+      <path d="M194 168c8-14 20-20 36-20 0 20-10 36-28 36-8 0-14-4-18-10" fill="${C.mint}" stroke="${C.line}" stroke-width="4"/>
+    `;
+  } else if(t.includes('encéfalo')) extra += '<path d="M132 84c0-20 12-34 28-34 10 0 18 5 22 13 4-8 12-13 22-13 16 0 28 14 28 34 0 20-12 32-28 32h-44c-16 0-28-12-28-32z" fill="'+C.lav+'" stroke="'+C.line+'" stroke-width="4.5"/><path d="M160 52v60M140 74h40M146 94h28" stroke="'+C.ink+'" stroke-width="2.5" opacity=".4"/>';
+  else if(t.includes('médula')) extra += '<path d="M160 44v132" stroke="'+C.sky+'" stroke-width="14" stroke-linecap="round"/><path d="M160 84h-34M160 112h34M160 140h-24" stroke="'+C.mint+'" stroke-width="8" stroke-linecap="round"/>';
+  else if(t.includes('nervios')) extra += '<circle cx="104" cy="112" r="16" fill="'+C.yellow+'" stroke="'+C.line+'" stroke-width="4"/><path d="M122 112h80M202 112l20-22M202 112l20 22" stroke="'+C.sky+'" stroke-width="9" stroke-linecap="round"/><circle cx="222" cy="90" r="5" fill="'+C.sky+'"/><circle cx="222" cy="134" r="5" fill="'+C.sky+'"/>';
+  else if(t.includes('ganglios')) extra += '<path d="M76 112h54M190 112h54" stroke="'+C.sky+'" stroke-width="9" stroke-linecap="round"/><circle cx="160" cy="112" r="26" fill="'+C.lav+'" stroke="'+C.line+'" stroke-width="5"/><circle cx="160" cy="112" r="9" fill="'+C.sky+'"/>';
+  else extra += '<path d="M160 48c35 0 60 22 60 52 0 26-18 40-36 40h-48c-18 0-36-14-36-40 0-30 25-52 60-52z" fill="'+C.lav+'" stroke="'+C.line+'" stroke-width="6"/><path d="M160 140v46" stroke="'+C.ink+'" stroke-width="11" stroke-linecap="round"/><path d="M160 160H110M160 160h50M160 178H128M160 178h32" stroke="'+C.mint+'" stroke-width="9" stroke-linecap="round"/>';
+  return `<svg viewBox="0 0 320 220" aria-hidden="true">${extra}</svg>`;
+}
+
+function sensesArt(title){
+  const t = title.toLowerCase();
+  let extra = '';
+  if(t.includes('visión')) extra = '<path d="M74 117c22-30 51-46 86-46s64 16 86 46c-22 30-51 46-86 46s-64-16-86-46z" fill="'+C.sky+'" stroke="'+C.line+'" stroke-width="6"/><circle cx="160" cy="117" r="28" fill="'+C.lav+'"/><circle cx="160" cy="117" r="12" fill="'+C.ink+'"/>';
+  else if(t.includes('gusto')) extra = '<path d="M110 82c0 52 24 88 50 88s50-36 50-88c-12 10-24 16-50 16s-38-6-50-16z" fill="'+C.rose+'" stroke="'+C.line+'" stroke-width="6"/><path d="M160 98v48" stroke="#fff" stroke-width="7" stroke-linecap="round"/>';
+  else if(t.includes('olfactor')) extra = '<path d="M174 56c-24 0-48 19-48 49 0 28 18 47 40 47 17 0 28-12 28-28 0-13-7-23-19-30-10-6-14-12-14-19 0-8 5-14 13-19z" fill="'+C.peach+'" stroke="'+C.line+'" stroke-width="6"/><circle cx="196" cy="146" r="11" fill="'+C.mint+'"/>';
+  else if(t.includes('vestibulococlear')) extra = '<path d="M145 64c-20 0-36 16-36 36v20c0 20 16 36 36 36h12c28 0 54-26 54-54 0-21-17-38-38-38-11 0-20 4-28 12z" fill="'+C.lav+'" stroke="'+C.line+'" stroke-width="6"/><path d="M175 86c14 8 24 20 30 36" stroke="'+C.sky+'" stroke-width="8" stroke-linecap="round"/>';
+  else extra = '<path d="M110 84c15-17 32-26 52-26 25 0 47 15 57 39-17 6-26 18-31 36-30-1-61-18-78-49z" fill="'+C.mint+'" stroke="'+C.line+'" stroke-width="6"/><circle cx="202" cy="86" r="9" fill="'+C.rose+'"/>';
+  return `<svg viewBox="0 0 320 220" aria-hidden="true">${extra}${svgLabel(86, 198, title.toUpperCase(), '#6d6586', 14)}</svg>`;
+}
+
+function skinArt(title){
+  const t = title.toLowerCase();
+  let extra = '';
+  if(t.includes('piel')) extra = '<rect x="88" y="66" width="144" height="96" rx="28" fill="'+C.peach+'" stroke="'+C.line+'" stroke-width="6"/><path d="M112 88l14 48M140 82l12 56M170 82l9 56M200 88l6 48" stroke="'+C.ink+'" stroke-width="6" stroke-linecap="round" opacity=".75"/>';
+  else if(t.includes('pelos')) extra = '<rect x="98" y="86" width="124" height="70" rx="26" fill="#fff" stroke="'+C.line+'" stroke-width="5"/><path d="M118 86l-2-24M142 86l0-28M166 86l4-30M190 86l8-26" stroke="'+C.ink+'" stroke-width="7" stroke-linecap="round"/>';
+  else if(t.includes('cuerno')) extra = '<path d="M160 44c28 22 44 52 44 84 0 20-16 36-36 36s-36-16-36-36c0-32 16-62 28-84z" fill="'+C.yellow+'" stroke="'+C.line+'" stroke-width="6"/>';
+  else if(t.includes('almohadillas')) extra = pawBase();
+  else if(t.includes('ungu')) extra = '<path d="M108 152c20-54 50-90 52-90 2 0 32 36 52 90" fill="'+C.peach+'" stroke="'+C.line+'" stroke-width="6"/><path d="M126 144l18-18M194 144l-18-18" stroke="'+C.ink+'" stroke-width="7" stroke-linecap="round"/>';
+  else if(t.includes('glándulas')) extra = '<circle cx="128" cy="110" r="22" fill="'+C.mint+'" stroke="'+C.line+'" stroke-width="5"/><circle cx="192" cy="110" r="22" fill="'+C.sky+'" stroke="'+C.line+'" stroke-width="5"/><path d="M128 132c0 12-10 20-10 28M192 132c0 12 10 20 10 28" stroke="'+C.ink+'" stroke-width="6" stroke-linecap="round"/>';
+  else extra = '<path d="M104 150V96a56 56 0 0 1 112 0v54" fill="'+C.peach+'" stroke="'+C.line+'" stroke-width="6"/><circle cx="132" cy="148" r="12" fill="'+C.rose+'"/><circle cx="188" cy="148" r="12" fill="'+C.rose+'"/>';
+  return `<svg viewBox="0 0 320 220" aria-hidden="true">${extra}${svgLabel(104, 198, title.toUpperCase(), '#6d6586', 14)}</svg>`;
+}
+
+function artSVG(item){
+  if(item.icon==='orientation') return orientationArt(item.title);
+  if(item.icon==='limb') return limbArt(item.title);
+  if(item.icon==='general') return generalArt(item.title);
+  if(item.icon==='body') return bodyArt(item.title);
+  if(item.icon==='region') return regionArt(item.title);
+  if(['bone','joint','muscle','organs','heart'].includes(item.icon)) return branchArt(item.title);
+  if(item.icon==='nervous') return nervousArt(item.title);
+  if(item.icon==='senses') return sensesArt(item.title);
+  if(item.icon==='skin') return skinArt(item.title);
+  return `<svg viewBox="0 0 320 220" aria-hidden="true"><rect x="84" y="64" width="152" height="92" rx="28" fill="#fff" stroke="${C.line}" stroke-width="5"/></svg>`;
+}
+
+function buildCard(item){
+  const speechText = `${item.title}. ${item.definition} ${item.detail}`;
+  return `
+    <div class="card" data-title="${esc(item.title)}">
+      <div class="card-inner">
+        <div class="face front">
+          <div class="card-bar">
+            <div class="classif">${esc(item.section)}</div>
+            <div class="controls">
+              <button class="icon-btn speak-btn" type="button" aria-label="Escuchar" data-speech="${esc(speechText)}">🔊</button>
+              <button class="icon-btn flip-btn" type="button" aria-label="Girar tarjeta">↻</button>
+            </div>
+          </div>
+          <div class="art-box">${artSVG(item)}</div>
+          <h3 class="card-title">${esc(item.title)}</h3>
+        </div>
+        <div class="face back">
+          <div class="card-bar">
+            <div class="back-head">
+              <h3>${esc(item.title)}</h3>
+              <p class="back-sub">${esc(item.section)}</p>
+            </div>
+            <div class="controls">
+              <button class="icon-btn speak-btn" type="button" aria-label="Escuchar" data-speech="${esc(speechText)}">🔊</button>
+              <button class="icon-btn flip-btn" type="button" aria-label="Volver">↺</button>
+            </div>
+          </div>
+          <div class="back-scroll">
+            <div class="info">
+              <b>Qué significa</b>
+              <span>${esc(item.definition)}</span>
+            </div>
+            <div class="info">
+              <b>Cómo ubicarlo</b>
+              <span>${esc(item.detail)}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function buildBlock(block, idx){
+  return `
+    <section class="block" data-block-index="${idx}">
+      <header class="block-head">
+        <h2>${esc(block.title)}</h2>
+        <p>${esc(block.subtitle)}</p>
+      </header>
+      <div class="viewer">
+        <div class="card-shell" data-card-shell></div>
+        <div class="block-footer">
+          <button class="nav-btn prev-btn" type="button" aria-label="Anterior">←</button>
+          <div class="counter" data-counter></div>
+          <button class="nav-btn next-btn" type="button" aria-label="Siguiente">→</button>
+        </div>
+      </div>
+    </section>`;
+}
+
+const grid = document.getElementById('grid');
+const state = DATA.map(() => 0);
+grid.innerHTML = DATA.map((block, idx) => buildBlock(block, idx)).join('');
+
+function renderBlock(index){
+  const block = DATA[index];
+  const host = grid.querySelector(`.block[data-block-index="${index}"]`);
+  const cardShell = host.querySelector('[data-card-shell]');
+  const counter = host.querySelector('[data-counter]');
+  const item = block.items[state[index]];
+  cardShell.innerHTML = buildCard(item);
+  counter.textContent = `${state[index] + 1} / ${block.items.length}`;
+
+  const card = cardShell.querySelector('.card');
+  cardShell.querySelectorAll('.flip-btn').forEach(btn => btn.addEventListener('click', () => card.classList.toggle('flipped')));
+  cardShell.querySelectorAll('.speak-btn').forEach(btn => btn.addEventListener('click', () => speech(btn.dataset.speech)));
+  host.querySelector('.prev-btn').onclick = () => {
+    state[index] = (state[index] - 1 + block.items.length) % block.items.length;
+    renderBlock(index);
+  };
+  host.querySelector('.next-btn').onclick = () => {
+    state[index] = (state[index] + 1) % block.items.length;
+    renderBlock(index);
+  };
+}
+
+DATA.forEach((_, idx) => renderBlock(idx));
+</script>
+</body>
+</html>
